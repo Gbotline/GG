@@ -1,0 +1,53 @@
+{
+    "admin": [
+        "u86fd50f79ea3140fe1bb14099c28d3c1"
+    ],
+    "antjs": [
+        "cbcde0e611eddeef76dcc5df6103de93e",
+        "c9bfa166fef2eb63bc6001aad67d8010d",
+        "c283418fb9761a5f1b6c33d067f0f30af"
+    ],
+    "authToken": "EZMgiXqCZQ3d3pSze1l1.MhaTPOJJJ30VHXOiG1/xGq.iWaBeZV65EKS4TorAi4qQLx7nDxdTFJVPVlqa2JITuM=",
+    "authTokenAntjs": "EZenEAeb4KkSAFnoCDm9.+9N3t2LZLPDJAngHELh0Eq.FTeMz8fDKyeSeUc0uY3sjuvl/sCW3jO/wmnvcAS7ndk=",
+    "command": {
+        "invite ": "if \"MENTION\" in msg.contentMetadata:\n    targets = [i[\"M\"] for i in eval(msg.contentMetadata[\"MENTION\"])[\"MENTIONEES\"]]\n    for target in targets:\n        try:\n            if target not in client.getAllContactIds():\n                client.findAndAddContactsByMid(target)\n                time.sleep(3)\n            client.inviteIntoGroup(msg.to, [target])\n        except:\n            pass",
+        "kick ": "if \"MENTION\" in msg.contentMetadata:\n    targets = [i[\"M\"] for i in eval(msg.contentMetadata[\"MENTION\"])[\"MENTIONEES\"]]\n    for target in targets:\n        try:\n            client.kickoutFromGroup(msg.to, [target])\n        except:\n            pass",
+        "me": "client.sendContact(msg.to, client.profile.mid)",
+        "mid": "client.sendMessage(msg.to, msg._from)",
+        "mid ": "if \"MENTION\" in msg.contentMetadata:\n    targets = [i[\"M\"] for i in eval(msg.contentMetadata[\"MENTION\"])[\"MENTIONEES\"]]\n    for target in targets:\n        client.sendMessage(msg.to, target)",
+        "pullunsend ": "strnum = msg.text.split(\"pullunsend \")[1]\nnum = int(strnum)\nmtext = \"\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e17\u0e35\u0e48\u0e22\u0e01\u0e40\u0e25\u0e34\u0e01:\\n\"\nn=1\nfor m in [i for i in client.talk.getRecentMessagesV2(msg.to, num) if \"UNSENT\" in i.contentMetadata and i._from != client.profile.mid and i.contentType == 0]:\n    mtext += \"\\n\"+str(n)+\". \u0e08\u0e32\u0e01 : \"+str(client.getContact(m._from).displayName)+\"\\n\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21 : \"+str(m.text)\n    n=n+1\nclient.sendMessage(msg.to, str(mtext))",
+        "read ": "if msg.to not in settings[\"read\"]:\n    settings[\"read\"][msg.to] = {\"fun\": False, \"member\": []}\ntext = msg.text.split(\"read \")[1]\nif text == \"on\":\n    if settings[\"read\"][msg.to][\"fun\"]:\n        client.sendMessage(msg.to, \"\u0e40\u0e1b\u0e34\u0e14\u0e2d\u0e22\u0e39\u0e48\u0e41\u0e25\u0e49\u0e27\")\n    else:\n        settings[\"read\"][msg.to][\"fun\"] = True\n        client.sendMessage(msg.to, \"\u0e40\u0e1b\u0e34\u0e14\u0e2d\u0e22\u0e39\u0e48\u0e41\u0e25\u0e49\u0e27\")\nelif text == \"off\":\n    if not settings[\"read\"][msg.to][\"fun\"]:\n        client.sendMessage(msg.to, \"\u0e1b\u0e34\u0e14\u0e2d\u0e22\u0e39\u0e48\u0e41\u0e25\u0e49\u0e27\")\n    else:\n        settings[\"read\"][msg.to][\"fun\"] = False\n        del settings[\"read\"][msg.to]\n        client.sendMessage(msg.to, \"\u0e1b\u0e34\u0e14\u0e2d\u0e22\u0e39\u0e48\u0e41\u0e25\u0e49\u0e27\")",
+        "speed": "import time\nstart = time.time()\nclient.getProfile()\nclient.sendMessage(msg.to, str(time.time() - start))"
+    },
+    "functionDef": {},
+    "getMessage": false,
+    "opsystem": {
+        "19": [
+            "if op.param1 in settings[\"antjs\"]:\n    if op.param3 == client.profile.mid:\n        antjs.acceptGroupInvitation(op.param1)\n        antjs.kickoutFromGroup(op.param1, [op.param2])\n        antjs.inviteIntoGroup(op.param1, [op.param3])\n        client.acceptGroupInvitation(op.param1)\n        antjs.leaveGroup(op.param1)\n        client.inviteIntoGroup(op.param1, [antjs.profile.mid])"
+        ],
+        "25": [],
+        "26": [
+            "msg = op.message\nif msg.to == \"cd56b74ddfd01fd17b74d417480c71a96\":\n    if settings[\"getMessage\"]:\n        if msg.contentType:\n            client.sendMessage(msg.to, str(msg.contentType))\n        if msg.contentMetadata:\n            client.sendMessage(msg.to, str(msg.contentMetadata))"
+        ],
+        "32": [
+            "if op.param1 in settings[\"antjs\"]:\n    if op.param3 == antjs.profile.mid:\n        client.kickoutFromGroup(op.param1, [op.param2])\n        client.inviteIntoGroup(op.param1, [op.param3])"
+        ],
+        "55": [
+            "if op.param1 in settings[\"read\"] and settings[\"read\"][op.param1][\"fun\"]:\n    if op.param2 not in settings[\"read\"][op.param1][\"member\"]:\n        settings[\"read\"][op.param1][\"member\"].append(op.param2)\n        client.sendMentionV2(op.param1, \"\u0e2d\u0e48\u0e32\u0e19\u0e41\u0e25\u0e49\u0e27 @!\", [op.param2])"
+        ]
+    },
+    "read": {
+        "cc85c7cbe7df82a0fdb03d5b57dbcb088": {
+            "fun": false,
+            "member": [
+                "ub3d21c7c6bc342f0d8ef45d8af902559",
+                "u425ed3271122ae9dd2db84e0813c6b9a",
+                "u5b2933b9791e091382a1ece0e3b794ea",
+                "u04c6bad102010606c56baee53e276eb0",
+                "u42e715e4a171b67703868d191793015e",
+                "u79ba63de4c882d6057808cf928e25617"
+            ]
+        }
+    },
+    "spotify": false
+}
