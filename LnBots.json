@@ -1,0 +1,11 @@
+{
+    "Talkblacklist": {},
+    "Talkdblacklist": false,
+    "Talkwblacklist": false,
+    "blacklist": {
+        "u7b4429be30b164973d1e5ff844bd2f3c": true
+    },
+    "dblacklist": false,
+    "talkban": true,
+    "wblacklist": false
+}
