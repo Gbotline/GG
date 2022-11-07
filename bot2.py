@@ -1233,7 +1233,7 @@ def kickBot(op):
                                  "linkUrl": "line://nv/profilePopup/mid=uf16e7700aed711bf44ec5e40e75401a8"
                             }
                         }
-                        sendTemplate(to, data)        
+                        sendTemplate(to, run)        
                         
                     elif text.lower() == "ออน":
                         timeNow = time.time() - Start
@@ -1241,40 +1241,40 @@ def kickBot(op):
                         contact = ball.getContact(ballMID)
                         run = "⇨ เวลาออนไลน์บอท ⇦\n"
                         run += runtime
-                        data = {
-                            "type": "flex",
-                            "altText": "{}".format(run),
-                            "contents": {
-                                    "type": "bubble",
-                                "styles": {
-                                    "body": {
-                                        "backgroundColor": '#000000'
-                                     },
-                                },
-                                "hero": {
-                                                "type": "image",
-                                                "url": "https://obs.line-scdn.net/{}".format(contact.pictureStatus),
-                                                "size": "full",
-                                                "aspectRatio": "1:1",
-                                                "aspectMode": "fit",
-                                            },
-                                "body": {
-                                    "type": "box",
-                                    "layout": "vertical",
-                                    "contents": [                              
-                                        {
-                                            "type": "text",
-                                            "text": "{}".format(run),
-                                            "wrap": True,
-                                            "color": "#990066",
-                                            "align": "center",
-                                            "gravity": "center",
-                                            "size": "md"
-                                        },
-                                   ]
-                               }
-                            }
-                        }
+###                        data = {
+#                           "type": "flex",
+#                            "altText": "{}".format(run),
+#                            "contents": {
+#                                    "type": "bubble",
+#                                "styles": {
+#                                    "body": {
+#                                        "backgroundColor": '#000000'
+#                                     },
+#                                },
+#                                "hero": {
+#                                                "type": "image",
+#                                                "url": "https://obs.line-scdn.net/{}".format(contact.pictureStatus),
+#                                                "size": "full",
+#                                                "aspectRatio": "1:1",
+#                                                "aspectMode": "fit",
+#                                            },
+#                                "body": {
+#                                    "type": "box",
+#                                    "layout": "vertical",
+#                                    "contents": [                              
+#                                        {
+#                                            "type": "text",
+#                                            "text": "{}".format(run),
+#                                            "wrap": True,
+#                                            "color": "#990066",
+#                                            "align": "center",
+#                                            "gravity": "center",
+#                                            "size": "md"
+#                                        },
+#                                   ]
+#                               }
+#                           }
+#                       }
                         sendTemplate(to, data)                                    
                         
                     elif text.lower() == '.นม':
@@ -1311,7 +1311,7 @@ def kickBot(op):
                                                 "size": "full",
                                                 "action": {
                                                     "type": "uri",
-                                                    "uri": "line://ti/p/~0981971406"
+                                                    "uri": "line://ti/p/~"
                                                 }
                                             }
                                         ]
@@ -1332,7 +1332,7 @@ def kickBot(op):
                                                 "size": "full",
                                                 "action": {
                                                     "type": "uri",
-                                                    "uri": "line://ti/p/~0981971406"
+                                                    "uri": "line://ti/p/~"
                                                 }
                                             }
                                         ]
@@ -1347,7 +1347,7 @@ def kickBot(op):
                         contact = ball.getContact(ballMID)
                         data = {
                             "type": "flex",
-                            "altText": "𝔹𝕆𝕃𝕃 𝔹𝕆𝕋 𝕃𝕀ℕ𝔼",
+                            "altText": "GG 𝔹𝕆𝕋 𝕃𝕀ℕ𝔼",
                             "contents": {
                                 "type": "bubble",
                                 "styles": {
@@ -1554,7 +1554,7 @@ def kickBot(op):
                         pp = GS.pictureStatus
                         data = {
                             "type": "flex",
-                            "altText": "𝔹𝕆𝕃𝕃 𝔹𝕆𝕋 𝕃𝕀ℕ𝔼",
+                            "altText": "GG 𝔹𝕆𝕋 𝕃𝕀ℕ𝔼",
                             "contents": {
                                 "type": "bubble",
                                 "body": {
