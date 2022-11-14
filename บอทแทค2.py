@@ -80,7 +80,7 @@ RXBot= [ballMID]
 #=====================Add open admin ===================
 Family = ["u043d36cb5db2298595407d06e6405502"]
 admin = ["u043d36cb5db2298595407d06e6405502"]
-creator = ["u043d36cb5db2298595407d06e6405502"]
+creator = ["u043d36cb5db2298595407d06e6405502"] 
 owner = ["u043d36cb5db2298595407d06e6405502"]
 staff = ["u043d36cb5db2298595407d06e6405502"]
 Bots = [ballMID]
