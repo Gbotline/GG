@@ -27,7 +27,7 @@ botStart = time.time()
 APP = "DESKTOPMAC\t6.5.2\tMAC\t10.15.1"
 #ball = LINE('azxcvbboll0034@gmail.com','aa112233',appName="DESKTOPMAC\t6.5.2\tMAC\t10.15.1")
 #ball = LINE('azxcvbboll112233@gmail.com','aa112233',appName="DESKTOPMAC\t6.5.2\tMAC\t10.15.1")
-ball = LINE('sce15405@cuoly.com','aa112233',appName="DESKTOPMAC\t6.5.2\tMAC\t10.15.1")
+ball = LINE('koz03457@cdfaq.com','golf06032543',appName="DESKTOPMAC\t6.5.2\tMAC\t10.15.1")
 print("𝙻𝙾𝙶𝙸𝙽 𝙳𝙾𝙽𝙴")
 #ball.sendMessage("cbafb31fa5ac456e56c07c47c7bcf5e67","เริ่มต้นใช้งาน")
 now2 = datetime.now()
@@ -78,11 +78,11 @@ rr = ["'แกร็ก..!'\nมันเป็นเพียงเสียง
 #=========
 RXBot= [ballMID]
 #=====================Add open admin ===================
-Family = ["uf16e7700aed711bf44ec5e40e75401a8","uf16e7700aed711bf44ec5e40e75401a8"]
-admin = ["uf16e7700aed711bf44ec5e40e75401a8","uf16e7700aed711bf44ec5e40e75401a8","uf16e7700aed711bf44ec5e40e75401a8"]
-creator = ["uf16e7700aed711bf44ec5e40e75401a8","uf16e7700aed711bf44ec5e40e75401a8"]
-owner = ["uf16e7700aed711bf44ec5e40e75401a8","uf16e7700aed711bf44ec5e40e75401a8"]
-staff = ["uf16e7700aed711bf44ec5e40e75401a8","uf16e7700aed711bf44ec5e40e75401a8"]
+Family = ["u043d36cb5db2298595407d06e6405502"]
+admin = ["u043d36cb5db2298595407d06e6405502"]
+creator = ["u043d36cb5db2298595407d06e6405502"]
+owner = ["u043d36cb5db2298595407d06e6405502"]
+staff = ["u043d36cb5db2298595407d06e6405502"]
 Bots = [ballMID]
 for id in admin:
     if id not in ball.getAllContactIds():
