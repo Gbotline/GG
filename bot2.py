@@ -1303,7 +1303,7 @@ def kickBot(op):
                                }
                            }
                        }
-                       ball.sendMessage(to,run)                                   
+                    #   ball.sendMessage(msg.to, str(run))                                  
                        
                     elif text.lower() == '.นม':
                                 gifnya = ['https://i.pinimg.com/originals/87/a8/9b/87a89b5aeaf35ba0c8879db5a136ccbd.gif']
@@ -1730,26 +1730,26 @@ def kickBot(op):
 #==========================
                     elif text.lower() == '.เชคบอท':
                            helpMessage4 = helpbot4()
-                           totalTime = time.time() - Start
-                         mins, secs = divmod(totalTime,60)
-                         hours, mins = divmod(mins,60)
-                         days, hours = divmod(hours, 24)
-                         resTime = ""
-                         if days != 00:
-                             resTime += "%2d วัน " % (days)
-                         if hours != 00:
-                             resTime += "%2d ชั่วโมง " % (hours)
-                         if mins != 00:
-                             resTime += "%2d นาที " % (mins)
-                         resTime += "%2d วินาที" % (secs)
-                         totalTime = time.time() - Start
-                         mins, secs = divmod(totalTime,60)
-                         hours, mins = divmod(mins,60)
-                         days, hours = divmod(hours, 24)
-                         mounts, days = divmod(days, 30)
-                         years, mounts = divmod(mounts, 12)                    	
-                         detailShow = helpMessage4.format(bName=ball.getProfile().displayName,runtime=resTime)
-                         hMsg1 = detailShow
+                           totalTime1 = time.time() - Start
+                         mins1, secs1 = divmod(totalTime1,60)
+                         hours1, mins1 = divmod(mins1,60)
+                         days1, hours1 = divmod(hours1, 24)
+                         resTime1 = ""
+                         if days1 != 00:
+                             resTime1 += "%2d วัน " % (days1)
+                         if hours1 != 00:
+                             resTime1 += "%2d ชั่วโมง " % (hours1)
+                         if mins1 != 00:
+                             resTime1 += "%2d นาที " % (mins1)
+                         resTime1 += "%2d วินาที" % (secs1)
+                         totalTime1 = time.time() - Start
+                         mins1, secs1 = divmod(totalTime1,60)
+                         hours1, mins1 = divmod(mins1,60)
+                         days1, hours1 = divmod(hours1, 24)
+                         mounts1, days1 = divmod(days1, 30)
+                         years1, mounts1 = divmod(mounts1, 12)                    	
+                         detailShow1 = helpMessage4.format(bName=ball.getProfile().displayName,runtime=resTime1)
+                         hMsg1 = detailShow1
                            ball.sendMessage(msg.to, str(hMsg1))
                     elif text.lower() == '.ลูกเล่น':
                            helpMessage3 = helpbot3()
