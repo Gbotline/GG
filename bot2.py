@@ -1731,9 +1731,9 @@ def kickBot(op):
                     elif text.lower() == '.เชคบอท':
                            helpMessage4 = helpbot4()
                            totalTime1 = time.time() - Start
-                         mins1, secs1 = divmod(totalTime1,60)
-                         hours1, mins1 = divmod(mins1,60)
-                         days1, hours1 = divmod(hours1, 24)
+                         #mins1, secs1 = divmod(totalTime1,60)
+                         #hours1, mins1 = divmod(mins1,60)
+                         #days1, hours1 = divmod(hours1, 24)
                          resTime1 = ""
                          if days1 != 00:
                              resTime1 += "%2d วัน " % (days1)
