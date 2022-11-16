@@ -1715,7 +1715,7 @@ def kickBot(op):
                                 continue
                         ball.sendMessage(msg.to, "ยกเลิก {} ข้อความเรียบร้อยแล้ว".format(IDS))                              
 #==========================
-                    elif text.lower() == '.เชคบอท:
+                    elif text.lower() == '.เชคบอท':
                            helpMessage4 = helpbot4()
                            ball.sendMessage(msg.to, str(helpMessage4))
                     elif text.lower() == '.ลูกเล่น':
