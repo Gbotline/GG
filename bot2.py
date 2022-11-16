@@ -1290,7 +1290,7 @@ def kickBot(op):
                                }
                            }
                        }
-                       sendflex(to, data)                                    
+                       sendTemplate(to, data)                                    
                        
                     elif text.lower() == '.นม':
                                 gifnya = ['https://i.pinimg.com/originals/87/a8/9b/87a89b5aeaf35ba0c8879db5a136ccbd.gif']
