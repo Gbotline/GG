@@ -619,9 +619,9 @@ def helpbot1():
 ┃💔 ทักออก เปิด /  ทักออก ปิด
 ┃💔 เลขา
 ┃💔 📍
-┃🎀 b url on             😈(คำสั่งเปิดลิ้งกลุ่ม)💔
-┃🎀 closelink          😈(คำสั่งปิดลิ้งกลุ่ม)🥰
-┃🎀 Requestlink     😈(ขอลิ้งกลุ่ม)💔
+┃🎀 .เปิดลิงค์             😈(คำสั่งเปิดลิ้งกลุ่ม)💔
+┃🎀 .ปิดลิงค์          😈(คำสั่งปิดลิ้งกลุ่ม)🥰
+┃🎀 .glink     😈(ขอลิ้งกลุ่ม)💔
 ┃🇨🇦 read                  😈(ดูรายชื่อคนอ่าน)🥰
 ┃🇨🇦 opensecretly    😈(ดูคนแอบอ่านเปิด)💔
 ┃🇨🇦 closesecretly   😈(ดูคนแอบอ่านปิด)🥰
@@ -1235,12 +1235,30 @@ def kickBot(op):
                         }
                         sendTemplate(to, run)        
                         
-                    elif text.lower() == "ออน":
-                        timeNow = time.time() - Start
-                        runtime = timeChange(timeNow)
+                    elif text.lower() == ".ออน":
+                        totalTime = time.time() - Start
+                        mins, secs = divmod(totalTime,60)
+                         hours, mins = divmod(mins,60)
+                         days, hours = divmod(hours, 24)
+                         resTime = ""
+                         if days != 00:
+                             resTime += "%2d วัน " % (days)
+                         if hours != 00:
+                             resTime += "%2d ชั่วโมง " % (hours)
+                         if mins != 00:
+                             resTime += "%2d นาที " % (mins)
+                         resTime += "%2d วินาที" % (secs)
+                         totalTime = time.time() - Start
+                         mins, secs = divmod(totalTime,60)
+                         hours, mins = divmod(mins,60)
+                         days, hours = divmod(hours, 24)
+                         mounts, days = divmod(days, 30)
+                         years, mounts = divmod(mounts, 12)                    	
+                         detailShow = helptest.format(bName=ball.getProfile().displayName,runtime=resTime)
+                         hMsg = detailShow
                         contact = ball.getContact(ballMID)
                         run = "⇨ เวลาออนไลน์บอท ⇦\n"
-                        run += runtime
+                        run += hMsg
 ###                        data = {
 #                           "type": "flex",
 #                            "altText": "{}".format(run),
@@ -1275,7 +1293,7 @@ def kickBot(op):
 #                               }
 #                           }
 #                       }
-                        sendTemplate(to, data)                                    
+                        sendTemplate(to, run)                                    
                         
                     elif text.lower() == '.นม':
                                 gifnya = ['https://i.pinimg.com/originals/87/a8/9b/87a89b5aeaf35ba0c8879db5a136ccbd.gif']
@@ -2709,7 +2727,7 @@ def kickBot(op):
                                 x.removeAllMessages(op.param2) 
                             ball.sendMessage(to,"The chat has been deleted.")
 #=============================URL Down ==============================================
-                    elif teambotboy == 'b url on' or teambotboy == 't url on':
+                    elif teambotboy == '.เปิดลิงค์' or teambotboy == 't url on':
                         if msg._from in owner:
                             group = ball.getGroup(to)
                             if group.preventedJoinByTicket == False:
@@ -2718,7 +2736,7 @@ def kickBot(op):
                                 group.preventedJoinByTicket = False
                                 ball.updateGroup(group)
                             ball.sendMessage(to,"The link is already open.")
-                    elif teambotboy == 'closelink' or teambotboy == 't url off':
+                    elif teambotboy == '.ปิดลิงค์' or teambotboy == 't url off':
                         if msg._from in owner:
                             group = ball.getGroup(to)
                             if group.preventedJoinByTicket == True:
@@ -2727,7 +2745,7 @@ def kickBot(op):
                                 group.preventedJoinByTicket = True
                                 ball.updateGroup(group)
                             ball.sendMessage(to,"The link is closed.")							
-                    elif teambotboy == 'requestlink' or teambotboy == 't url':
+                    elif teambotboy == '.glink' or teambotboy == 't url':
                         if msg._from in owner:
                             group = ball.getGroup(to)
                             if group.preventedJoinByTicket == False:
