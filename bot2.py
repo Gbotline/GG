@@ -1730,27 +1730,10 @@ def kickBot(op):
 #==========================
                     elif text.lower() == '.เชคบอท':
                            helpMessage4 = helpbot4()
-                           totalTime1 = time.time() - Start
-                         #mins1, secs1 = divmod(totalTime1,60)
-                         #hours1, mins1 = divmod(mins1,60)
-                         #days1, hours1 = divmod(hours1, 24)
-                         resTime1 = ""
-                         if days1 != 00:
-                             resTime1 += "%2d วัน " % (days1)
-                         if hours1 != 00:
-                             resTime1 += "%2d ชั่วโมง " % (hours1)
-                         if mins1 != 00:
-                             resTime1 += "%2d นาที " % (mins1)
-                         resTime1 += "%2d วินาที" % (secs1)
-                         totalTime1 = time.time() - Start
-                         mins1, secs1 = divmod(totalTime1,60)
-                         hours1, mins1 = divmod(mins1,60)
-                         days1, hours1 = divmod(hours1, 24)
-                         mounts1, days1 = divmod(days1, 30)
-                         years1, mounts1 = divmod(mounts1, 12)                    	
-                         detailShow1 = helpMessage4.format(bName=ball.getProfile().displayName,runtime=resTime1)
-                         hMsg1 = detailShow1
-                           ball.sendMessage(msg.to, str(hMsg1))
+                        timeNow1 = time.time() - Start
+                        runtime1 = timeChange(timeNow1)
+                        helpMessage4 += runtime1
+                           ball.sendMessage(msg.to, str(helpMessage4))
                     elif text.lower() == '.ลูกเล่น':
                            helpMessage3 = helpbot3()
                            ball.sendMessage(msg.to, str(helpMessage3))                           
