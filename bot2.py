@@ -139,6 +139,11 @@ helptest = """-------------------คำสั่งกลุ่ม--------------
 ↪ชื่อบอท: {bName}
 ↪ออนไลน์: {runtime}
 --------------------𝔹𝕆𝕋 𝕃𝕀ℕ𝔼 --------------------""".format(bName="{bName}",ballMID=cl,runtime="{runtime}")
+
+helptest1 = """-------------------ข้อมูลบอท------------------------
+↪ชื่อบอท: {bName}
+↪ออนไลน์: {runtime}
+--------------------𝔹𝕆𝕋 𝕃𝕀ℕ𝔼 --------------------""".format(bName="{bName}",ballMID=cl,runtime="{runtime}")
 #=========================================
 Saints = RXBot + Family + admin + creator + owner + staff
 RXFam = RXBot + Family + admin + creator + owner + staff
@@ -1129,6 +1134,30 @@ def kickBot(op):
                          years, mounts = divmod(mounts, 12)                    	
                          detailShow = helptest.format(bName=ball.getProfile().displayName,runtime=resTime)
                          hMsg = detailShow
+                         ball.sendMessage(msg.to, hMsg)
+
+                         elif text.lower() == 'เชคออน':
+            #          if msg._from in admin:
+                         totalTime1 = time.time() - Start
+                         mins1, secs = divmod(totalTime1,60)
+                         hours, mins1 = divmod(mins1,60)
+                         days, hours = divmod(hours, 24)
+                         resTime = ""
+                         if days != 00:
+                             resTime += "%2d วัน " % (days)
+                         if hours != 00:
+                             resTime += "%2d ชั่วโมง " % (hours)
+                         if mins1 != 00:
+                             resTime += "%2d นาที " % (mins1)
+                         resTime += "%2d วินาที" % (secs)
+                         totalTime1 = time.time() - Start
+                         mins1, secs = divmod(totalTime1,60)
+                         hours, mins1 = divmod(mins1,60)
+                         days, hours = divmod(hours, 24)
+                         mounts, days = divmod(days, 30)
+                         years, mounts = divmod(mounts, 12)                    	
+                         detailShow1 = helptest1.format(bName=ball.getProfile().displayName,runtime=resTime)
+                         hMsg = detailShow1
                          ball.sendMessage(msg.to, hMsg)
                          
                     elif msg.text.lower().startswith("/ชื่อกลุ่ม "):
