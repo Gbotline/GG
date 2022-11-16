@@ -79,7 +79,7 @@ rr = ["'แกร็ก..!'\nมันเป็นเพียงเสียง
 RXBot= [ballMID]
 #=====================Add open admin ===================
 Family = ["u043d36cb5db2298595407d06e6405502"]
-admin = ["u043d36cb5db2298595407d06e6405502"]
+admin = ["u043d36cb5db2298595407d06e6405502","uafadc43f0a6af61a96f1beb389abc576"]
 creator = ["u043d36cb5db2298595407d06e6405502"]
 owner = ["u043d36cb5db2298595407d06e6405502"]
 staff = ["u043d36cb5db2298595407d06e6405502"]
@@ -657,6 +657,16 @@ def helpbot3():
 
       return myHelp3
 
+def helpbot4():
+      helpMessage4 = """╔═════════
+↪ชื่อบอท: {bName}
+↪ออนไลน์: {runtime}
+--------------------𝔹𝕆𝕋 𝕃𝕀ℕ𝔼 --------------------
+╚═〘 𝔹𝕆𝕃𝕃 𝔹𝕆𝕋 𝕃𝕀ℕ𝔼 line://ti/p/~〙""".format(bName="{bName}",ballMID=cl,runtime="{runtime}")
+      return helpMessage4
+
+      return myHelp4
+
 def mentionMembers(to, mids=[]):
     if ball in mids: mids.remove(ball)
     parsed_len = len(mids)//20+1
@@ -1025,7 +1035,7 @@ def kickBot(op):
             msg_id = msg.id
             receiver = msg.to
             sender = msg._from
-          #  txt      = text.lower()
+            txt      = text.lower() #รอเชค
             if msg.toType == 0 or msg.toType == 1 or msg.toType == 2:
                 if msg.toType == 0:
                     if sender != ball.profile.mid:
@@ -1135,30 +1145,6 @@ def kickBot(op):
                          detailShow = helptest.format(bName=ball.getProfile().displayName,runtime=resTime)
                          hMsg = detailShow
                          ball.sendMessage(msg.to, hMsg)
-
-                         elif text.lower() == 'เชคออน':
-            #          if msg._from in admin:
-                         totalTime1 = time.time() - Start
-                         mins1, secs = divmod(totalTime1,60)
-                         hours, mins1 = divmod(mins1,60)
-                         days, hours = divmod(hours, 24)
-                         resTime = ""
-                         if days != 00:
-                             resTime += "%2d วัน " % (days)
-                         if hours != 00:
-                             resTime += "%2d ชั่วโมง " % (hours)
-                         if mins1 != 00:
-                             resTime += "%2d นาที " % (mins1)
-                         resTime += "%2d วินาที" % (secs)
-                         totalTime1 = time.time() - Start
-                         mins1, secs = divmod(totalTime1,60)
-                         hours, mins1 = divmod(mins1,60)
-                         days, hours = divmod(hours, 24)
-                         mounts, days = divmod(days, 30)
-                         years, mounts = divmod(mounts, 12)                    	
-                         detailShow1 = helptest1.format(bName=ball.getProfile().displayName,runtime=resTime)
-                         hMsg = detailShow1
-                         ball.sendMessage(msg.to, hMsg)
                          
                     elif msg.text.lower().startswith("/ชื่อกลุ่ม "):
                         group = ball.getCompactGroup(msg.to)
@@ -1262,7 +1248,7 @@ def kickBot(op):
                                  "linkUrl": "line://nv/profilePopup/mid=uf16e7700aed711bf44ec5e40e75401a8"
                             }
                         }
-                        sendTemplate(to, run)        
+                        sendflex(to, data)        
                         
                     elif text.lower() == ".ออน":
                         timeNow = time.time() - Start
@@ -1270,42 +1256,42 @@ def kickBot(op):
                         contact = ball.getContact(ballMID)
                         run = "⇨ เวลาออนไลน์บอท ⇦\n"
                         run += runtime
-###                        data = {
-#                           "type": "flex",
-#                            "altText": "{}".format(run),
-#                            "contents": {
-#                                    "type": "bubble",
-#                                "styles": {
-#                                    "body": {
-#                                        "backgroundColor": '#000000'
-#                                     },
-#                                },
-#                                "hero": {
-#                                                "type": "image",
-#                                                "url": "https://obs.line-scdn.net/{}".format(contact.pictureStatus),
-#                                                "size": "full",
-#                                                "aspectRatio": "1:1",
-#                                                "aspectMode": "fit",
-#                                            },
-#                                "body": {
-#                                    "type": "box",
-#                                    "layout": "vertical",
-#                                    "contents": [                              
-#                                        {
-#                                            "type": "text",
-#                                            "text": "{}".format(run),
-#                                            "wrap": True,
-#                                            "color": "#990066",
-#                                            "align": "center",
-#                                            "gravity": "center",
-#                                            "size": "md"
-#                                        },
-#                                   ]
-#                               }
-#                           }
-#                       }
-                        sendTemplate(to, run)                                    
-                        
+                        data = {
+                           "type": "flex",
+                            "altText": "{}".format(run),
+                            "contents": {
+                                    "type": "bubble",
+                                "styles": {
+                                    "body": {
+                                        "backgroundColor": '#000000'
+                                     },
+                                },
+                                "hero": {
+                                                "type": "image",
+                                                "url": "https://obs.line-scdn.net/{}".format(contact.pictureStatus),
+                                                "size": "full",
+                                                "aspectRatio": "1:1",
+                                                "aspectMode": "fit",
+                                            },
+                                "body": {
+                                    "type": "box",
+                                    "layout": "vertical",
+                                    "contents": [                              
+                                        {
+                                            "type": "text",
+                                            "text": "{}".format(run),
+                                            "wrap": True,
+                                            "color": "#990066",
+                                            "align": "center",
+                                            "gravity": "center",
+                                            "size": "md"
+                                        },
+                                   ]
+                               }
+                           }
+                       }
+                       sendflex(to, data)                                    
+                       
                     elif text.lower() == '.นม':
                                 gifnya = ['https://i.pinimg.com/originals/87/a8/9b/87a89b5aeaf35ba0c8879db5a136ccbd.gif']
                                 data = {
@@ -1325,7 +1311,7 @@ def kickBot(op):
                                         ]
                                     }
                                 }
-                                sendTemplate(to, data)
+                                sendflex(to, data)
                                 
                     elif text.lower() == '.ท่าหมา':
                                 gifnya = ['https://sv1.picz.in.th/images/2020/11/28/j4bALy.gif']
@@ -1346,7 +1332,7 @@ def kickBot(op):
                                         ]
                                     }
                                 }
-                                sendTemplate(to, data)      
+                                sendflex(to, data)      
 
                     elif text.lower() == '555':
                                 gifnya = ['https://media.giphy.com/media/gHohwrHIWhU8UboBsl/giphy.gif']
@@ -1367,7 +1353,7 @@ def kickBot(op):
                                         ]
                                     }
                                 }
-                                sendTemplate(to, data)                        
+                                sendflex(to, data)                        
                                 
                     elif msg.text.lower().startswith("เขียน "):
                         sep = text.split(" ")
@@ -1408,7 +1394,7 @@ def kickBot(op):
                                 }
                             }
                         }
-                        sendTemplate(to, data)        
+                        sendflex(to, data)        
                         
                     elif msg.text.lower().startswith("ยูทูป"):
                                 sep = text.split(" ")
@@ -1565,7 +1551,7 @@ def kickBot(op):
                                                 "contents": ret_[aa*10 : (aa+1)*10]
                                             }
                                         }
-                                        sendTemplate(to, data)                        
+                                        sendflex(to, data)                        
             
                     elif msg.text.lower().startswith("ไอดีไลน์ "):
                             sep = text.split(" ")
@@ -1623,7 +1609,7 @@ def kickBot(op):
                                 }
                             }
                         }
-                        sendTemplate(to, data)     
+                        sendflex(to, data)     
                         ball.sendContact(to, adminroom)          
 
                     elif msg.text.lower() == '/ข้อมูลกลุ่ม':
@@ -1729,9 +1715,9 @@ def kickBot(op):
                                 continue
                         ball.sendMessage(msg.to, "ยกเลิก {} ข้อความเรียบร้อยแล้ว".format(IDS))                              
 #==========================
-#                    elif text.lower() == 'คำสั่ง':
-#                           helpMessage2 = helpbot2()
- #                          ball.sendMessage(msg.to, str(helpMessage2))
+                    elif text.lower() == '.เชคบอท:
+                           helpMessage4 = helpbot4()
+                           ball.sendMessage(msg.to, str(helpMessage4))
                     elif text.lower() == '.ลูกเล่น':
                            helpMessage3 = helpbot3()
                            ball.sendMessage(msg.to, str(helpMessage3))                           
@@ -2046,7 +2032,7 @@ def kickBot(op):
                                         time.sleep(0.9)
                                     except Exeception as e:
                                         ball.sendMessage(to,str(e))
-                    elif msg.text.lower() == "!groups":
+                    elif msg.text.lower() == "!เชคกลุ่ม":
                         if msg._from in admin:
                             no = 1
                             text = ""
@@ -2150,11 +2136,11 @@ def kickBot(op):
                                 ball.sendMessage(to,"Protection URL is Disable")
                             else:
                                 ball.sendMessage(to,"Protection URL is already Disable")
-                    elif teambotboy == ".รีบอท" or teambotboy == "t ree":
+                    elif teambotboy == ".รีบอท" or teambotboy == "ปิดระบบ":
                       if msg._from in admin:
                           restartBot()       
                           
-                    elif teambotboy == "restart" or teambotboy == "t restart":
+                    elif teambotboy == "restart" or teambotboy == "/รีบอท":
                       if msg._from in admin:
                           ball.sendMessage(to, "The bot has been reset successfully.")
                           python = sys.executable
@@ -2219,14 +2205,14 @@ def kickBot(op):
                     elif teambotboy == 'เช็ค' or teambotboy == 'set':
                         if msg._from in admin:
                            ret_ = "🇹🇭==[ เช็คต้อนรับว่าเปิดรึปิด ]==🇹🇭"                                                       
-                           if msg.to in welcomegroup: ret_ += "\n\n🇹🇭 welcomegroup: On 【✔】"
-                           else: ret_ += "\n\n🇹🇭 welcomegroup: Off 【🚫】"      
-                           if msg.to in leavegroup: ret_ += "\n\n🇹🇭 leavegroup: On 【✔】"
-                           else: ret_ += "\n\n🇹🇭 leavegroup: Off 【🚫】"                                                       
+                           if msg.to in welcomegroup: ret_ += "\n\n🇹🇭 ต้อนรับ: เปิด 【✅】"
+                           else: ret_ += "\n\n🇹🇭 ต้อนรับ: ปิด 【🚫】"      
+                           if msg.to in leavegroup: ret_ += "\n\n🇹🇭 ออกกลุ่ม: เปิด 【✅】"
+                           else: ret_ += "\n\n🇹🇭 ออกกลุ่ม: ปิด 【🚫】"                                                       
                            random.choice(Basx).sendMessage(to,str(ret_))
 #=================================x setting up  ===========================           
 
-                    elif teambotboy == "asdf" or teambotboy == "asdfg":
+                    elif teambotboy == "tastbot" or teambotboy == ".เทสบอท":
                       if msg._from in admin:
                           def speedbot():
                               start = time.time()
@@ -2243,15 +2229,15 @@ def kickBot(op):
                     elif teambotboy == ".ดำ" or teambotboy == "blacklist":
                       if msg._from in admin: 
                         settings["wblacklist"] = True
-                        ball.sendMessage(to, "• Please send the contactor down. •")
+                        ball.sendMessage(to, "• กรุณาส่งคอนแทคลงมา •")
                     elif teambotboy == ".ขาว" or teambotboy == "blacktea":
                       if msg._from in admin: 
                         settings["dblacklist"] = True
-                        ball.sendMessage(to, "• Please send the contactor down. •")
+                        ball.sendMessage(to, "• กรุณาส่งคอนแทคลงมา •")
                     elif teambotboy == "/ล้างดำ" or teambotboy == "ล้างดำ1":
                       if msg._from in admin: 
                         settings["blacklist"] = {}
-                        ball.sendMessage(to, "The blacklist has been cleared.")
+                        ball.sendMessage(to, "ล้างบัญชีดำเรียบร้อยแล้ว 💯")
                     elif teambotboy == "godown" or teambotboy == "t cb":
                       if msg._from in admin:
                           if msg.toType == 2:
@@ -2360,7 +2346,7 @@ def kickBot(op):
      #                    if has1 == "OK":sil1 = "บัคแล้วค่ะ🥺"
      #                    else:sil1 = "ไม่บัคค่ะ🥰"
      #                    ball.sendMessage(to, "{}".format(sil1,sil))
-                    elif teambotboy == "banlist" or teambotboy == "/เชคดำ":
+                    elif teambotboy == ".banlist" or teambotboy == "/เชคดำ":
                       if msg._from in admin:
                         if settings["blacklist"] == {}:
                             ball.sendMessage(to, "Can't find the blacklist list.")
@@ -2426,12 +2412,12 @@ def kickBot(op):
                         if msg._from in admin:
                             text = msg.text.replace('ตั้งต้อนรับ: ',"")
                             optypesg["welcomeMessage"] = text
-                            ball.sendMessage(msg.to, "Succeed")
+                            ball.sendMessage(msg.to, "Succeed✅")
                     elif teambotboy.startswith('t welcome:add'):
                         if msg._from in admin:
                             text = msg.text.replace('t welcome:add ',"")
                             optypesg["welcomeMessage"] = text
-                            ball.sendMessage(msg.to, "Succeed")
+                            ball.sendMessage(msg.to, "Succeed✅")
                     elif teambotboy == 'เชคต้อนรับ' or teambotboy == 't welcome:check':
                         if msg._from in admin:
                             ball.sendMessage(msg.to, "ข้อความต้อนรับออกที่ตั้ง: "+str(optypesg["welcomeMessage"]))
@@ -2439,12 +2425,12 @@ def kickBot(op):
                         if msg._from in admin:
                             text = msg.text.replace('ตั้งออก ',"")
                             optypesg["leaveMessage"] = text
-                            ball.sendMessage(msg.to, "Succeed")
+                            ball.sendMessage(msg.to, "Succeed✅")
                     elif teambotboy.startswith('t leave:add'):
                         if msg._from in admin:
                             text = msg.text.replace('t leave:add ',"")
                             optypesg["leaveMessage"] = text
-                            ball.sendMessage(msg.to, "Succeed")
+                            ball.sendMessage(msg.to, "Succeed✅")
                     elif teambotboy == 'เชคออก' or teambotboy == 't leave:check':
                         if msg._from in admin:
                             ball.sendMessage(msg.to, "ข้อความต้อนรับเข้าที่ตั้ง: "+str(optypesg["leaveMessage"]))
@@ -2697,7 +2683,7 @@ def kickBot(op):
                                  ball.sendMentionV2(to, result, read["readMember"][to])
                                  read['readMember'][to] = []
 #===============================Check admin+staff down =========================
-                    elif teambotboy == '.แอดมิน' or teambotboy == 'แอดมิน':
+                    elif teambotboy == '.แอดมิน' or teambotboy == '/แอดมิน':
                         if msg._from in admin:
                             text="🇹🇭===[ ʟɪsᴛ ᴀᴅᴍɪɴ ]===🇹🇭\n"
                             no=1
@@ -2714,7 +2700,7 @@ def kickBot(op):
                                 no=no+1
                             ball.sendMessage(to,str(text))
                     
-                    elif msg.text.lower() == '.คทแอด' or msg.text.lower() == 'แอดมิน':
+                    elif msg.text.lower() == '.คทแอด' or msg.text.lower() == 'คทแอด':
                         if msg._from in owner:
                             for x in admin:
                                 print(x)
@@ -2742,20 +2728,20 @@ def kickBot(op):
                         if msg._from in owner:
                             group = ball.getGroup(to)
                             if group.preventedJoinByTicket == False:
-                                ball.sendMessage(to,"The link has been opened.")
+                                ball.sendMessage(to,"🟢 เปิดลิงค์กลุ่มเรียบร้อย 🟢")
                             else:
                                 group.preventedJoinByTicket = False
                                 ball.updateGroup(group)
-                            ball.sendMessage(to,"The link is already open.")
+                            ball.sendMessage(to,"ลิงค์กลุ่มถูกปิดอยู่แล้ว")
                     elif teambotboy == '.ปิดลิงค์' or teambotboy == 't url off':
                         if msg._from in owner:
                             group = ball.getGroup(to)
                             if group.preventedJoinByTicket == True:
-                                ball.sendMessage(to,"Rea hundred link closed.")
+                                ball.sendMessage(to,"ลิงค์กลุ่มถูกปิดอยู่แล้ว")
                             else:
                                 group.preventedJoinByTicket = True
                                 ball.updateGroup(group)
-                            ball.sendMessage(to,"The link is closed.")							
+                            ball.sendMessage(to,"🔴 ปิดลิงค์กลุ่มเรียบร้อย 🔴")							
                     elif teambotboy == '.glink' or teambotboy == 't url':
                         if msg._from in owner:
                             group = ball.getGroup(to)
@@ -2838,15 +2824,15 @@ def kickBot(op):
                     elif teambotboy == "autoblock on" or teambotboy == "/เปิดบล็อค":
                       if msg._from in admin:
                           settings["autoBlock"] = True
-                          ball.sendMessage(to, "The block has been opened.")
+                          ball.sendMessage(to, "🟢 เปิดบล็อกแล้ว 🟢")
                     elif teambotboy == "autoblock off" or teambotboy == "/ปิดบล็อค":
                       if msg._from in admin:
                           settings["autoBlock"] = False
-                          ball.sendMessage(to, "The block has been closed.")
+                          ball.sendMessage(to, "🔴 ปิดบล็อกแล้ว 🔴")
                     elif teambotboy == ".อัพรูป" or teambotboy == "/อัพรูป":
                       if msg._from in owner:
                           settings["changePictureProfile"] = True
-                          ball.sendMessage(to, "Please send us pictures.")
+                          ball.sendMessage(to, "ส่งรูปภาพ ตั้งรูปโปรไฟล์")
 
             if msg.contentType == 1:
                  
