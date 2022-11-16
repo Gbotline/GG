@@ -93,6 +93,32 @@ for id in admin:
 #=========================================
 helptest = """-------------------คำสั่งกลุ่ม------------------------
 ↪แทค
+↪/ชื่อกลุ่ม ชื่อ (เปลี่ยนชื่อกลุ่ม)
+↪/เปิดqr (เปิดลิงก์กลุ่ม)
+↪/ปิดqr (ปิดลิงก์กลุ่ม)
+↪ต้อนรับ เปิด/ปิด
+↪เปิดแอบ/ปิดแอบ(ดูคนแอบอ่าน)
+↪เปิดอ่าน/ปิดอ่าน (ดูคนอ่าน)
+↪/ยกเลิก จำนวน (ยกเลิกข้อความ)
+-------------------คำสั่งบอท------------------------
+↪/บอทออก (สั่งบอทออก)
+↪/ออน , ออน (เวลาออนไลน์บอท)
+↪/speed (ความเร็วบอท)
+↪/ลบแชท (ลบแชทบอท)
+-------------------คำสั่งอื่นๆ------------------------
+↪ยี่กี: (ประกาศข้อความ)
+↪ตั้งapi (ตั้งตอบกลับ)
+↪เชคapi (เช็คตอบกลับ)
+↪คำห้ามพิมพ์ คำ (ตั้งคำห้าม)
+↪ลบห้ามพิมพ์ คำ (ลบคำห้าม)
+↪เชคห้ามพิมพ์ (เช็คห้ามพิมพ์)
+-------------------ข้อมูลบอท------------------------
+↪ชื่อบอท: {bName}
+↪ออนไลน์: {runtime}
+--------------------𝔹𝕆𝕋 𝕃𝕀ℕ𝔼 --------------------""".format(bName="{bName}",ballMID=cl,runtime="{runtime}")
+
+helptest1 = """-------------------คำสั่งกลุ่ม------------------------
+↪แทค
 ↪/แอดกลุ่ม (ดูคนสร้างกลุ่ม)
 ↪/ข้อมูลกลุ่ม (ดูข้อมูลกลุ่ม)
 ↪/gct (ดูเวลาสร้างกลุ่ม)
@@ -118,13 +144,6 @@ helptest = """-------------------คำสั่งกลุ่ม--------------
 ↪/ออน , ออน (เวลาออนไลน์บอท)
 ↪/speed (ความเร็วบอท)
 ↪/ลบแชท (ลบแชทบอท)
--------------------คำสั่งเกม------------------------
-↪.rps (เป่ายิ้งฉุบ)
-↪.coin (หัวก้อย)
-↪.slot (สล็อต)
-↪.dice (ทอยเต๋า)
-↪.hilo (ไฮโล)
-↪.roulette (รูเล็ตต์)
 -------------------คำสั่งอื่นๆ------------------------
 ↪ยี่กี: (ประกาศข้อความ)
 ↪ยูทูป คำที่จะหา (ค้นยูทูป)
@@ -136,11 +155,6 @@ helptest = """-------------------คำสั่งกลุ่ม--------------
 ↪ลบห้ามพิมพ์ คำ (ลบคำห้าม)
 ↪เชคห้ามพิมพ์ (เช็คห้ามพิมพ์)
 -------------------ข้อมูลบอท------------------------
-↪ชื่อบอท: {bName}
-↪ออนไลน์: {runtime}
---------------------𝔹𝕆𝕋 𝕃𝕀ℕ𝔼 --------------------""".format(bName="{bName}",ballMID=cl,runtime="{runtime}")
-
-helptest1 = """-------------------ข้อมูลบอท------------------------
 ↪ชื่อบอท: {bName}
 ↪ออนไลน์: {runtime}
 --------------------𝔹𝕆𝕋 𝕃𝕀ℕ𝔼 --------------------""".format(bName="{bName}",ballMID=cl,runtime="{runtime}")
@@ -661,7 +675,6 @@ def helpbot4():
       helpMessage4 = """╔═════════
 ↪ชื่อบอท: {bName}
 ↪ออนไลน์: {runtime}
---------------------𝔹𝕆𝕋 𝕃𝕀ℕ𝔼 --------------------
 ╚═〘 𝔹𝕆𝕃𝕃 𝔹𝕆𝕋 𝕃𝕀ℕ𝔼 line://ti/p/~〙""".format(bName="{bName}",ballMID=cl,runtime="{runtime}")
       return helpMessage4
 
@@ -1035,7 +1048,7 @@ def kickBot(op):
             msg_id = msg.id
             receiver = msg.to
             sender = msg._from
-            txt      = text.lower() #รอเชค
+#            txt      = text.lower() #รอเชค
             if msg.toType == 0 or msg.toType == 1 or msg.toType == 2:
                 if msg.toType == 0:
                     if sender != ball.profile.mid:
@@ -1248,7 +1261,7 @@ def kickBot(op):
                                  "linkUrl": "line://nv/profilePopup/mid=uf16e7700aed711bf44ec5e40e75401a8"
                             }
                         }
-                        sendflex(to, data)        
+                        sendTemplate(to, data)        
                         
                     elif text.lower() == ".ออน":
                         timeNow = time.time() - Start
@@ -1290,7 +1303,7 @@ def kickBot(op):
                                }
                            }
                        }
-#                       sendTemplate(to, data)                                    
+                       ball.sendMessage(to,run)                                   
                        
                     elif text.lower() == '.นม':
                                 gifnya = ['https://i.pinimg.com/originals/87/a8/9b/87a89b5aeaf35ba0c8879db5a136ccbd.gif']
@@ -1311,7 +1324,7 @@ def kickBot(op):
                                         ]
                                     }
                                 }
-                                sendflex(to, data)
+                                sendTemplate(to, data)
                                 
                     elif text.lower() == '.ท่าหมา':
                                 gifnya = ['https://sv1.picz.in.th/images/2020/11/28/j4bALy.gif']
@@ -1332,7 +1345,7 @@ def kickBot(op):
                                         ]
                                     }
                                 }
-                                sendflex(to, data)      
+                                sendTemplate(to, data)      
 
                     elif text.lower() == '555':
                                 gifnya = ['https://media.giphy.com/media/gHohwrHIWhU8UboBsl/giphy.gif']
@@ -1353,7 +1366,7 @@ def kickBot(op):
                                         ]
                                     }
                                 }
-                                sendflex(to, data)                        
+                                sendTemplate(to, data)                        
                                 
                     elif msg.text.lower().startswith("เขียน "):
                         sep = text.split(" ")
@@ -1394,7 +1407,7 @@ def kickBot(op):
                                 }
                             }
                         }
-                        sendflex(to, data)        
+                        sendTemplate(to, data)        
                         
                     elif msg.text.lower().startswith("ยูทูป"):
                                 sep = text.split(" ")
@@ -1551,7 +1564,7 @@ def kickBot(op):
                                                 "contents": ret_[aa*10 : (aa+1)*10]
                                             }
                                         }
-                                        sendflex(to, data)                        
+                                        sendTemplate(to, data)                        
             
                     elif msg.text.lower().startswith("ไอดีไลน์ "):
                             sep = text.split(" ")
@@ -1609,7 +1622,7 @@ def kickBot(op):
                                 }
                             }
                         }
-                        sendflex(to, data)     
+                        sendTemplate(to, data)     
                         ball.sendContact(to, adminroom)          
 
                     elif msg.text.lower() == '/ข้อมูลกลุ่ม':
@@ -1717,7 +1730,27 @@ def kickBot(op):
 #==========================
                     elif text.lower() == '.เชคบอท':
                            helpMessage4 = helpbot4()
-                           ball.sendMessage(msg.to, str(helpMessage4))
+                           totalTime = time.time() - Start
+                         mins, secs = divmod(totalTime,60)
+                         hours, mins = divmod(mins,60)
+                         days, hours = divmod(hours, 24)
+                         resTime = ""
+                         if days != 00:
+                             resTime += "%2d วัน " % (days)
+                         if hours != 00:
+                             resTime += "%2d ชั่วโมง " % (hours)
+                         if mins != 00:
+                             resTime += "%2d นาที " % (mins)
+                         resTime += "%2d วินาที" % (secs)
+                         totalTime = time.time() - Start
+                         mins, secs = divmod(totalTime,60)
+                         hours, mins = divmod(mins,60)
+                         days, hours = divmod(hours, 24)
+                         mounts, days = divmod(days, 30)
+                         years, mounts = divmod(mounts, 12)                    	
+                         detailShow = helpMessage4.format(bName=ball.getProfile().displayName,runtime=resTime)
+                         hMsg1 = detailShow
+                           ball.sendMessage(msg.to, str(hMsg1))
                     elif text.lower() == '.ลูกเล่น':
                            helpMessage3 = helpbot3()
                            ball.sendMessage(msg.to, str(helpMessage3))                           
@@ -2742,7 +2775,7 @@ def kickBot(op):
                                 group.preventedJoinByTicket = True
                                 ball.updateGroup(group)
                             ball.sendMessage(to,"🔴 ปิดลิงค์กลุ่มเรียบร้อย 🔴")							
-                    elif teambotboy == '.glink' or teambotboy == 't url':
+                    elif teambotboy == '.getlink' or teambotboy == 't url':
                         if msg._from in owner:
                             group = ball.getGroup(to)
                             if group.preventedJoinByTicket == False:
