@@ -1236,29 +1236,11 @@ def kickBot(op):
                         sendTemplate(to, run)        
                         
                     elif text.lower() == ".ออน":
-                        totalTime = time.time() - Start
-                        mins, secs = divmod(totalTime,60)
-                         hours, mins = divmod(mins,60)
-                         days, hours = divmod(hours, 24)
-                         resTime = ""
-                         if days != 00:
-                             resTime += "%2d วัน " % (days)
-                         if hours != 00:
-                             resTime += "%2d ชั่วโมง " % (hours)
-                         if mins != 00:
-                             resTime += "%2d นาที " % (mins)
-                         resTime += "%2d วินาที" % (secs)
-                         totalTime = time.time() - Start
-                         mins, secs = divmod(totalTime,60)
-                         hours, mins = divmod(mins,60)
-                         days, hours = divmod(hours, 24)
-                         mounts, days = divmod(days, 30)
-                         years, mounts = divmod(mounts, 12)                    	
-                         detailShow = helptest.format(bName=ball.getProfile().displayName,runtime=resTime)
-                         hMsg = detailShow
+                        timeNow = time.time() - Start
+                        runtime = timeChange(timeNow)
                         contact = ball.getContact(ballMID)
                         run = "⇨ เวลาออนไลน์บอท ⇦\n"
-                        run += hMsg
+                        run += runtime
 ###                        data = {
 #                           "type": "flex",
 #                            "altText": "{}".format(run),
