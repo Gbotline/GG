@@ -673,9 +673,12 @@ def helpbot3():
 
 def helpbot4():
       helpMessage4 = """╔═════════
-↪ชื่อบอท: {bName}
-↪ออนไลน์: {runtime}
-╚═〘 𝔹𝕆𝕃𝕃 𝔹𝕆𝕋 𝕃𝕀ℕ𝔼 line://ti/p/~〙""".format(bName="{bName}",ballMID=cl,runtime="{runtime}")
+═══════ คำสั่ง ═══════
+อัพรูป -เปลี่ยนรูปโปรไฟล์
+.getlink -ขอลิงค์กลุ่ม
+.ปิดลิงค์ -ปิดลิงค์กลุ่ม
+.เปิดลิงค์ -เปิดลิงค์กลุ่ม
+╚═〘 𝔹𝕆𝕃𝕃 𝔹𝕆𝕋 𝕃𝕀ℕ𝔼 line://ti/p/~〙"""
       return helpMessage4
 
       return myHelp4
@@ -1728,11 +1731,8 @@ def kickBot(op):
                                 continue
                         ball.sendMessage(msg.to, "ยกเลิก {} ข้อความเรียบร้อยแล้ว".format(IDS))                              
 #==========================
-                    elif text.lower() == '.เชคบอท':
+                    elif text.lower() == '.บอท1':
                            helpMessage4 = helpbot4()
-                        timeNow1 = time.time() - Start
-                        runtime1 = timeChange(timeNow1)
-                        helpMessage4 += runtime1
                            ball.sendMessage(msg.to, str(helpMessage4))
                     elif text.lower() == '.ลูกเล่น':
                            helpMessage3 = helpbot3()
