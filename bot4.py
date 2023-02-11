@@ -2816,7 +2816,7 @@ def kickBot(op):
                                 sep = text.split(" ")
                                 txt = text.replace(sep[0] + " ","")
                                 try:
-                                    settings["autoAddMessage"] = txt
+                                    settings["message"] = txt
                                     sendMessage(to, "✯͜͡❂ เปลี่ยนข้อความเพิ่มเพื่อนอัตโนมัติเป็น : 「{}」".format(txt))
                                 except:
                                     sendMessage(to, "✯͜͡❂ ไม่สามารถเปลี่ยนข้อความเพิ่มเพื่อนอัตโนมัติได้")                           
@@ -2878,11 +2878,11 @@ def mainkick(op):
         a = time.strftime('%H:%M:%S', timeis)
         if op.type == 0:
             return
-        print ('++ Operation : ( %i ) %s' % (op.type, OpType._VALUES_TO_NAMES[op.type].replace('_', ' ')))
+        #print ('++ Operation : ( %i ) %s' % (op.type, OpType._VALUES_TO_NAMES[op.type].replace('_', ' ')))
         if op.type == 5:
             if RXProtect["autoAdd"] == True:
                 ball.findAndAddContactsByMid(op.param1)
-            ball.sendMessage(op.param1, settings["autoAddMessage"], [op.param1])
+            ball.sendMessage(op.param1, settings["message"], [op.param1])
             print("AUTO ADD CONTACT")
 #===================== autoBlock =============================
         if op.type == 5:
