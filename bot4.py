@@ -1190,6 +1190,18 @@ def kickBot(op):
                     elif msg.text.lower() == "/บอทออก":                     
                         ball.leaveGroup(msg.to)     
 
+                    elif msg.text.lower() == "!groups":
+                        if msg._from in admin:
+                            no = 1
+                            text = ""
+                            name = ball.profile.displayName
+                            groups = ball.getGroupIdsJoined()
+                            for group in groups:
+                                g = ball.getGroup(group)
+                                text += "%s. %s\n" % (str(no),str(g.name))
+                                no += 1
+                            ball.sendMessage(to,"%s in group:\n%s\nTotal %s Group(s)" % (str(name),str(text),str(len(groups))))
+
                     elif msg.text.lower() == "/ลบแชท":                     
                         ball.removeAllMessages(op.param2)
                         ball.sendMessage(to, "สำเร็จเเล้ว")
@@ -2172,12 +2184,12 @@ def kickBot(op):
                     elif msg.text.lower() == "เปิดประกาศ":
                         if msg._from in admin:
                             if Retext["open"] == False:
-                                Retext["open"] = True:
+                                Retext["open"] = True
                                 ball.sendMessage(to,"เปิดบอทประกาศแล้ว")
                     elif msg.text.lower() == "ปิดประกาศ":
                         if msg._from in admin:
-                            if Retext["open"] = True:
-                                Retext["open"] == False:
+                            if Retext["open"] == True:
+                                Retext["open"] = False
                                 ball.sendMessage(to,"ปิดบอทประกาศแล้ว")
 #=================================x setting down ========================== 
                     elif teambotboy == 'เช็ค' or teambotboy == 'set':
@@ -2797,8 +2809,18 @@ def kickBot(op):
                     elif teambotboy == "add on" or teambotboy == "t add on":
                       if msg._from in admin:
                           settings["contactadmin"] = True
-                          random.choice(Basx).sendMessage(to, "ส่ง ᴄᴏɴᴛᴀᴄᴛ คนทีจะตั้งแอดลงมา.")                               
-                                 
+                          random.choice(Basx).sendMessage(to, "ส่ง ᴄᴏɴᴛᴀᴄᴛ คนทีจะตั้งแอดลงมา.")    
+#เพิ่ม==========================================
+                    elif teambotboy == "setautoadd: ":
+                              if msg._from in admin:
+                                sep = text.split(" ")
+                                txt = text.replace(sep[0] + " ","")
+                                try:
+                                    settings["autoAddMessage"] = txt
+                                    sendMessage(to, "✯͜͡❂ เปลี่ยนข้อความเพิ่มเพื่อนอัตโนมัติเป็น : 「{}」".format(txt))
+                                except:
+                                    sendMessage(to, "✯͜͡❂ ไม่สามารถเปลี่ยนข้อความเพิ่มเพื่อนอัตโนมัติได้")                           
+#เพิ่ม==========================================
                     elif teambotboy == "autoblock on" or teambotboy == "/เปิดบล็อค":
                       if msg._from in admin:
                           settings["autoBlock"] = True
@@ -2851,6 +2873,18 @@ def kickBot(op):
 
 def mainkick(op):
     try:
+#===================== autoAdd =============================
+        timeis = time.localtime()
+        a = time.strftime('%H:%M:%S', timeis)
+        if op.type == 0:
+            return
+        print ('++ Operation : ( %i ) %s' % (op.type, OpType._VALUES_TO_NAMES[op.type].replace('_', ' ')))
+        if op.type == 5:
+            if RXProtect["autoAdd"] == True:
+                ball.findAndAddContactsByMid(op.param1)
+            ball.sendMessage(op.param1, settings["autoAddMessage"], [op.param1])
+            print("AUTO ADD CONTACT")
+#===================== autoBlock =============================
         if op.type == 5:
             if RXProtect["autoBlock"] == True:
                 if (settings["message"] in [""," ","\n",None]):
