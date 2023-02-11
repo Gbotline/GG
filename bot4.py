@@ -2169,17 +2169,16 @@ def kickBot(op):
                                         ball.sendMessage(manusia, (bctxt))
                                         time.sleep(0.1)
                                    # ball.sendMessage(receiver,"✴️ส่งประกาศเสร็จสิ้น💯")
-                    elif msg.text.lower() == "ประกาศ":
-                    sep = text.split(" ")
-                    mic = text.replace(sep[0] + " ","")
-                    if mic == "เปิด":
-                        if Retext["open"] == False:
-                            Retext["open"] = True:
-                            ball.sendMessage(to,"เปิดบอทประกาศแล้ว")
-                    elif mic == "ปิด":
-                        if Retext["open"] = True:
-                            Retext["open"] == False:
-                            ball.sendMessage(to,"ปิดบอทประกาศแล้ว")
+                    elif msg.text.lower() == "เปิดประกาศ":
+                        if msg._from in admin:
+                            if Retext["open"] == False:
+                                Retext["open"] = True:
+                                ball.sendMessage(to,"เปิดบอทประกาศแล้ว")
+                    elif msg.text.lower() == "ปิดประกาศ":
+                        if msg._from in admin:
+                            if Retext["open"] = True:
+                                Retext["open"] == False:
+                                ball.sendMessage(to,"ปิดบอทประกาศแล้ว")
 #=================================x setting down ========================== 
                     elif teambotboy == 'เช็ค' or teambotboy == 'set':
                         if msg._from in admin:
