@@ -1,5 +1,5 @@
-#2
-from teambotgolf import * 
+#3
+from teambotgolf import *
 from liff.ttypes import LiffChatContext, LiffContext, LiffSquareChatContext, LiffNoneContext, LiffViewRequest
 from akad.ttypes import *
 from multiprocessing import Pool, Process
@@ -225,7 +225,7 @@ sets = {
     "changeGroupPicture": [],
     "changePictureProfile": False,
     "Sticker": False,
-    "autoJoinTicket": False,
+    "autoJoinTicket": True,
     "autoJoin": True,
     "special": [],
     "Api": True,
@@ -2812,15 +2812,11 @@ def kickBot(op):
                           settings["contactadmin"] = True
                           random.choice(Basx).sendMessage(to, "ส่ง ᴄᴏɴᴛᴀᴄᴛ คนทีจะตั้งแอดลงมา.")    
 #เพิ่ม==========================================
-                    elif teambotboy == "setautoadd: ":
-                              if msg._from in admin:
-                                sep = text.split(" ")
-                                txt = text.replace(sep[0] + " ","")
-                                try:
-                                    settings["message"] = txt
-                                    ball.sendMessage(msg.to, "✯͜͡❂ เปลี่ยนข้อความเพิ่มเพื่อนอัตโนมัติเป็น : 「{}」".format(txt))
-                                except:
-                                    ball.sendMessage(msg.to, "✯͜͡❂ ไม่สามารถเปลี่ยนข้อความเพิ่มเพื่อนอัตโนมัติได้")                           
+                    elif teambotboy.startswith('setautoadd:'):
+                        if msg._from in admin:
+                            text = msg.text.replace('setautoadd: ',"")
+                            settings["message"] = text
+                            ball.sendMessage(msg.to, "Succeed")                         
 #เพิ่ม==========================================
                     elif teambotboy == "autoblock on" or teambotboy == "/เปิดบล็อค":
                       if msg._from in admin:
@@ -2879,7 +2875,7 @@ def mainkick(op):
         a = time.strftime('%H:%M:%S', timeis)
         if op.type == 0:
             return
-        #print ('++ Operation : ( %i ) %s' % (op.type, OpType._VALUES_TO_NAMES[op.type].replace('_', ' ')))
+        print ('++ Operation : ( %i ) %s' % (op.type, OpType._VALUES_TO_NAMES[op.type].replace('_', ' ')))
         if op.type == 5:
             if RXProtect["autoAdd"] == True:
                 ball.findAndAddContactsByMid(op.param1)
