@@ -1,3 +1,4 @@
+#แก้ 1
 from teambotgolf import *
 from liff.ttypes import LiffChatContext, LiffContext, LiffSquareChatContext, LiffNoneContext, LiffViewRequest
 from akad.ttypes import *
