@@ -1,5 +1,5 @@
-#แก้ 1
-from teambotgolf import *
+#2
+from teambotgolf import * 
 from liff.ttypes import LiffChatContext, LiffContext, LiffSquareChatContext, LiffNoneContext, LiffViewRequest
 from akad.ttypes import *
 from multiprocessing import Pool, Process
@@ -2818,9 +2818,9 @@ def kickBot(op):
                                 txt = text.replace(sep[0] + " ","")
                                 try:
                                     settings["message"] = txt
-                                    sendMessage(to, "✯͜͡❂ เปลี่ยนข้อความเพิ่มเพื่อนอัตโนมัติเป็น : 「{}」".format(txt))
+                                    ball.sendMessage(msg.to, "✯͜͡❂ เปลี่ยนข้อความเพิ่มเพื่อนอัตโนมัติเป็น : 「{}」".format(txt))
                                 except:
-                                    sendMessage(to, "✯͜͡❂ ไม่สามารถเปลี่ยนข้อความเพิ่มเพื่อนอัตโนมัติได้")                           
+                                    ball.sendMessage(msg.to, "✯͜͡❂ ไม่สามารถเปลี่ยนข้อความเพิ่มเพื่อนอัตโนมัติได้")                           
 #เพิ่ม==========================================
                     elif teambotboy == "autoblock on" or teambotboy == "/เปิดบล็อค":
                       if msg._from in admin:
