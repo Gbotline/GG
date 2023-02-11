@@ -1,5 +1,4 @@
-#3
-from teambotgolf import *
+from teambotgolf import * #5
 from liff.ttypes import LiffChatContext, LiffContext, LiffSquareChatContext, LiffNoneContext, LiffViewRequest
 from akad.ttypes import *
 from multiprocessing import Pool, Process
@@ -1010,6 +1009,8 @@ def kickBot(op):
                         to = sender
                     else:
                         to = receiver
+                    if sets["autoRead"] == True:
+                    ball.sendChatChecked(to, msg_id)	
                 elif msg.toType == 1:
                     to = receiver
                 elif msg.toType == 2:
