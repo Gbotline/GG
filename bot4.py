@@ -2168,7 +2168,7 @@ def kickBot(op):
                                         gname = ball.getGroup(manusia).name
                                         ball.sendMessage(manusia, (bctxt))
                                         time.sleep(0.1)
-                                   # ball.sendMessage(receiver,"✴️ส่งประกาศเสร็จสิ้น💯")
+                                   # ball.sendMessage(receiver,"✴️ส่งประกาศเสร็จสิ้น💯") fri
                     elif msg.text.lower() == "เปิดประกาศ":
                         if msg._from in admin:
                             if Retext["open"] == False:
@@ -2180,16 +2180,16 @@ def kickBot(op):
                                 Retext["open"] = False
                                 ball.sendMessage(to,"ปิดบอทประกาศแล้ว")
 
-                    elif msg.text.lower().startswith("ประกาศแชท "):
+                    elif msg.text.lower().startswith("ประกาศแชท:"):
                           if msg._from in owner:
-                            bctxt = text.split(" ")
-                            teambotmaxZ = text.replace(bctxt[0] + " ", "")
+                            bctxt = msg.text[len("ประกาศแชท:"):].strip()
                             contacts = ball.getAllContactIds()
                             #ball.reissueUserTicket()
                             for contact in contacts:
-                                ball.sendMessage(contact, (teambotmaxZ))
+                            ball.sendMessage(contact, "{}".format(str(bctxt)))
+                            ball.sendMessage(to, "Bₑᵣₕₐₛᵢₗ bᵣₒₐdcₐₛₜ ₖₑ {} ₜₑₘₐₙ".format(str(len(contacts))))
                                 time.sleep(0.1)
-                                ball.sendMessage(receiver,"✴️ส่งประกาศเสร็จสิ้น💯")
+                                #ball.sendMessage(receiver,"✴️ส่งประกาศเสร็จสิ้น💯")
                                 print ("ประกาศกลุ่มเรียบร้อย")
 #=================================x setting down ========================== ?? มุดเข้ากลุ่ม 🦋
                     elif teambotboy == 'เช็ค' or teambotboy == 'set':
