@@ -686,9 +686,11 @@ def kickBot(op):
         if op.type == 0:
             return
         if op.type == 5:
-            if settings["autoAdd"] == True:
-                runautoblock = mp.Process(target=ball.sendMessage(op.param1,str(settings["message"])+ball.getContact(ballMID).displayName))
-                runautoblock = mp.Process(target=ball.findAndAddContactsByMid(op.param1))
+            if RXProtect["autoAdd"] == True:
+                #runautoblock = mp.Process(target=ball.sendMessage(op.param1,str(settings["message"])+ball.getContact(ballMID).displayName))
+                #runautoblock = mp.Process(target=ball.findAndAddContactsByMid(op.param1))
+                maxbots.findAndAddContactsByMid(op.param1)
+                maxbots.sendMentionFooter(op.param1, settings["message"], [op.param1])
                 runautoblock.start()
                 
                 
@@ -2876,7 +2878,7 @@ def mainkick(op):
             return
         print ('++ Operation : ( %i ) %s' % (op.type, OpType._VALUES_TO_NAMES[op.type].replace('_', ' ')))
         if op.type == 5:
-            if RfuProtect["autoAdd"] == True:
+            if RXProtect["autoAdd"] == True:
                 if (settings["message"] in [""," ","\n",None]):
                     pass
                 else:
