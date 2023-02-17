@@ -2181,16 +2181,16 @@ def kickBot(op):
                                 ball.sendMessage(to,"ปิดบอทประกาศแล้ว")
 
                     elif msg.text.lower().startswith("ประกาศแชท:"):
-                          if msg._from in owner:
+                          if msg._from in admin:
                             bctxt = msg.text[len("ประกาศแชท:"):].strip()
                             contacts = ball.getAllContactIds()
                             #ball.reissueUserTicket()
-                            for contact in contacts:
-                            ball.sendMessage(contact, "{}".format(str(bctxt)))
+                            for manusia in contacts:
+                                ball.sendMessage(manusia, "{}".format(str(bctxt)))
                             ball.sendMessage(to, "Bₑᵣₕₐₛᵢₗ bᵣₒₐdcₐₛₜ ₖₑ {} ₜₑₘₐₙ".format(str(len(contacts))))
-                                time.sleep(0.1)
-                                #ball.sendMessage(receiver,"✴️ส่งประกาศเสร็จสิ้น💯")
-                                print ("ประกาศกลุ่มเรียบร้อย")
+                            time.sleep(0.1)
+                            #ball.sendMessage(receiver,"✴️ส่งประกาศเสร็จสิ้น💯")
+                            print ("ประกาศกลุ่มเรียบร้อย")
 #=================================x setting down ========================== ?? มุดเข้ากลุ่ม 🦋
                     elif teambotboy == 'เช็ค' or teambotboy == 'set':
                         if msg._from in admin:
