@@ -2184,19 +2184,14 @@ def kickBot(op):
                           if msg._from in owner:
                             bctxt = text.split(" ")
                             teambotmaxZ = text.replace(bctxt[0] + " ", "")
-                            maxZ = "{}".format(teambotmaxZ)
                             contacts = ball.getAllContactIds()
-                            teambotmaxX = ball.getContact(ballMID)
-                            sender_profile = ball.getContact(sender)
-                            bctxt = ball.getProfileCoverURL(ball.profile.mid)
-                            ball.reissueUserTicket()
-                            warna1 = ("#FFFFFF","#FFFF00")
-                            warnanya1 = random.choice(warna1)
-                                ball.sendMessage(contact, (bctxt))
+                            #ball.reissueUserTicket()
+                            for contact in contacts:
+                                ball.sendMessage(contact, (teambotmaxZ))
                                 time.sleep(0.1)
                                 ball.sendMessage(receiver,"✴️ส่งประกาศเสร็จสิ้น💯")
                                 print ("ประกาศกลุ่มเรียบร้อย")
-#=================================x setting down ========================== 
+#=================================x setting down ========================== ?? มุดเข้ากลุ่ม 🦋
                     elif teambotboy == 'เช็ค' or teambotboy == 'set':
                         if msg._from in admin:
                            ret_ = "🇹🇭==[ เช็คต้อนรับว่าเปิดรึปิด ]==🇹🇭"                                                       
