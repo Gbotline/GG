@@ -1,4 +1,4 @@
-from teambotgolf import * #5
+from teambotgolf import *
 from liff.ttypes import LiffChatContext, LiffContext, LiffSquareChatContext, LiffNoneContext, LiffViewRequest
 from akad.ttypes import *
 from multiprocessing import Pool, Process
@@ -1009,8 +1009,6 @@ def kickBot(op):
                         to = sender
                     else:
                         to = receiver
-                    if sets["autoRead"] == True:
-                    ball.sendChatChecked(to, msg_id)	
                 elif msg.toType == 1:
                     to = receiver
                 elif msg.toType == 2:
@@ -1191,18 +1189,6 @@ def kickBot(op):
                    
                     elif msg.text.lower() == "/บอทออก":                     
                         ball.leaveGroup(msg.to)     
-
-                    elif msg.text.lower() == "!groups":
-                        if msg._from in admin:
-                            no = 1
-                            text = ""
-                            name = ball.profile.displayName
-                            groups = ball.getGroupIdsJoined()
-                            for group in groups:
-                                g = ball.getGroup(group)
-                                text += "%s. %s\n" % (str(no),str(g.name))
-                                no += 1
-                            ball.sendMessage(to,"%s in group:\n%s\nTotal %s Group(s)" % (str(name),str(text),str(len(groups))))
 
                     elif msg.text.lower() == "/ลบแชท":                     
                         ball.removeAllMessages(op.param2)
@@ -2193,6 +2179,23 @@ def kickBot(op):
                             if Retext["open"] == True:
                                 Retext["open"] = False
                                 ball.sendMessage(to,"ปิดบอทประกาศแล้ว")
+
+                    elif msg.text.lower().startswith("ประกาศแชท "):
+                          if msg._from in owner:
+                            bctxt = text.split(" ")
+                            teambotmaxZ = text.replace(bctxt[0] + " ", "")
+                            maxZ = "{}".format(teambotmaxZ)
+                            contacts = ball.getAllContactIds()
+                            teambotmaxX = ball.getContact(ballMID)
+                            sender_profile = ball.getContact(sender)
+                            bctxt = ball.getProfileCoverURL(ball.profile.mid)
+                            ball.reissueUserTicket()
+                            warna1 = ("#FFFFFF","#FFFF00")
+                            warnanya1 = random.choice(warna1)
+                                ball.sendMessage(contact, (bctxt))
+                                time.sleep(0.1)
+                                ball.sendMessage(receiver,"✴️ส่งประกาศเสร็จสิ้น💯")
+                                print ("ประกาศกลุ่มเรียบร้อย")
 #=================================x setting down ========================== 
                     elif teambotboy == 'เช็ค' or teambotboy == 'set':
                         if msg._from in admin:
