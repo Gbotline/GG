@@ -1210,9 +1210,9 @@ def kickBot(op):
                                 G = ball.getGroup(group)
                                 try:
                                     ball.leaveGroup(G.id)
-                                except:
-                                    ball.leaveGroup(G.id)
-                                    ball.sendMessage(to, "「ออก 」\nกลุ่ม: " + G.name)
+                                    except:
+                                        ball.leaveGroup(G.id)
+                                        ball.sendMessage(to, "「ออก 」\nกลุ่ม: " + G.name)
                                 except Exception as error:
                                     ball.sendMessage(to, str(error))                         
 
