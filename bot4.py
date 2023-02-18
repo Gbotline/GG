@@ -683,47 +683,9 @@ def sendImage(to, path, name="image"):
 
 def duc1(to, duc1):
     data={
-"type": "flex",
-"altText": duc1,
-"contents": {
-"type": "bubble",
-"styles": {
-"footer": {"backgroundColor": "#000000"},
-},
-"footer": {
-"type": "box",
-"layout": "vertical",
-"spacing": "sm",
-"contents": [
-{
-"type": "box",
-"layout": "baseline",
-"contents": [
-{
-"type": "icon",
-"url": "https://obs.line-scdn.net/{}".format(ball.findAndAddContactsByMid(id).pictureStatus),
-"size": "md"
-},
-{
-"type": "text",
-"text": duc1,
-"color":"#ffffff",
-"gravity": "center",
-"align":"center",
-"wrap": True,
-"size": "md"
-},
-{
-"type": "icon",
-"url": "https://obs.line-scdn.net/{}".format(ball.findAndAddContactsByMid(id).pictureStatus),
-"size": "md"
-},
-]
-}
-]
-}
-}
-}
+      "type": "text",
+      "text": duc1
+      }
     sendTemplate(to, data)
 
 def kickBot(op):
