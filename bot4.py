@@ -1206,10 +1206,11 @@ def kickBot(op):
                             #number = removeCmd("/ออก", text)
                             groups = ball.getGroupIdsJoined()
                             try:
-                                group = groups[int(txt)-1]
+                                group = groups[int(txt)-9]
                                 G = ball.getGroup(group)
                                 try:
                                     ball.leaveGroup(G.id)
+                                    ball.sendMessage(to, "「ออก 」\nกลุ่ม: " + G.name)
                                 except:
                                     ball.leaveGroup(G.id)
                                     ball.sendMessage(to, "「ออก 」\nกลุ่ม: " + G.name)
