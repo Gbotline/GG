@@ -1213,8 +1213,8 @@ def kickBot(op):
                                 except:
                                     ball.leaveGroup(G.id)
                                 ball.sendMessage(to, "「ออก 」\nกลุ่ม: " + G.name)
-                        except Exception as error:
-                            ball.sendMessage(to, str(error))                         
+                            except Exception as error:
+                                ball.sendMessage(to, str(error))                         
 
                     elif msg.text.lower() == "/ลบแชท":                     
                         ball.removeAllMessages(op.param2)
