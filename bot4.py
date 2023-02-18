@@ -1203,7 +1203,7 @@ def kickBot(op):
                         if msg._from in admin:
                             sep = text.split(" ")
                             txt = text.replace(sep[0] + " ","")
-                            number = removeCmd("/ออก", text)
+                            #number = removeCmd("/ออก", text)
                             groups = ball.getGroupIdsJoined()
                             for group in groups:
                                 #group = groups[int(txt)-1]
