@@ -1199,14 +1199,14 @@ def kickBot(op):
                     elif msg.text.lower() == "/บอทออก":                     
                         ball.leaveGroup(msg.to)     
 
-                    elif msg.text.lower().startswith("/ออก ") and sender == ballMID:
+                    elif msg.text.lower().startswith("/ออก"):
                         if msg._from in admin:
                             sep = text.split(" ")
                             txt = text.replace(sep[0] + " ","")
                             number = removeCmd("/ออก", text)
                             groups = ball.getGroupIdsJoined()
-                            try:
-                                group = groups[int(txt)-1]
+                            for group in groups:
+                                #group = groups[int(txt)-1]
                                 G = ball.getGroup(group)
                                 try:
                                     ball.leaveGroup(G.id)
