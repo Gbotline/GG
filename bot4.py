@@ -694,11 +694,11 @@ def kickBot(op):
             return
         if op.type == 5:
             if RXProtect["autoAdd"] == True:
-                runautoblock = mp.Process(target=ball.findAndAddContactsByMid(op.param1))
-                runautoblock = mp.Process(target=ball.sendMessage(op.param1,str(settings["message"])+ball.getContact(ballMID).displayName))
+                #runautoblock = mp.Process(target=ball.findAndAddContactsByMid(op.param1))
+                #runautoblock = mp.Process(target=ball.sendMessage(op.param1,str(settings["message"])+ball.getContact(ballMID).displayName))
                 ball.findAndAddContactsByMid(op.param1)
                 ball.sendMessageWithMention(op.param1,str(settings["message"]))
-                runautoblock.start()
+                #runautoblock.start()
                 
                 
 ###
