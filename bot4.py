@@ -1206,7 +1206,7 @@ def kickBot(op):
                             #number = removeCmd("/ออก", text)
                             groups = ball.getGroupIdsJoined()
                             try:
-                                group = groups[int(txt)-9]
+                                group = groups[int(txt)]
                                 G = ball.getGroup(group)
                                 try:
                                     ball.leaveGroup(G.id)
