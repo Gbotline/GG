@@ -1199,6 +1199,23 @@ def kickBot(op):
                     elif msg.text.lower() == "/บอทออก":                     
                         ball.leaveGroup(msg.to)     
 
+                    elif msg.text.lower().startswith("/ออก ") and sender == ballMID:
+                        if msg._from in admin:
+                            sep = text.split(" ")
+                            txt = text.replace(sep[0] + " ","")
+                            number = removeCmd("/ออก", text)
+                            groups = ball.getGroupIdsJoined()
+                        try:
+                            group = groups[int(txt)-1]
+                            G = ball.getGroup(group)
+                        try:
+                            ball.leaveGroup(G.id)
+                        except:
+                            ball.leaveGroup(G.id)
+                            ball.sendMessage(to, "「ออก 」\nกลุ่ม: " + G.name)
+                        except Exception as error:
+                            ball.sendMessage(to, str(error))                         
+
                     elif msg.text.lower() == "/ลบแชท":                     
                         ball.removeAllMessages(op.param2)
                         ball.sendMessage(to, "สำเร็จเเล้ว")
@@ -2200,7 +2217,7 @@ def kickBot(op):
                             duc1(to, "ส่งข้อความถึงเพื่อน {} คน".format(str(len(friends))))
                             #ball.sendMessage(receiver,"✴️ส่งประกาศเสร็จสิ้น💯")
                             #print ("ประกาศกลุ่มเรียบร้อย")
-#=================================x setting down ========================== ?? มุดเข้ากลุ่ม 🦋
+#=================================x setting down ========================== บอทออก
                     elif teambotboy == 'เช็ค' or teambotboy == 'set':
                         if msg._from in admin:
                            ret_ = "🇹🇭==[ เช็คต้อนรับว่าเปิดรึปิด ]==🇹🇭"                                                       
