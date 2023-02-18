@@ -1205,16 +1205,16 @@ def kickBot(op):
                             txt = text.replace(sep[0] + " ","")
                             #number = removeCmd("/ออก", text)
                             groups = ball.getGroupIdsJoined()
-                            for group in groups:
-                                #group = groups[int(txt)-1]
+                            try:
+                                group = groups[int(txt)-1]
                                 G = ball.getGroup(group)
                                 try:
                                     ball.leaveGroup(G.id)
                                 except:
                                     ball.leaveGroup(G.id)
                                     ball.sendMessage(to, "「ออก 」\nกลุ่ม: " + G.name)
-                                #except Exception as error:
-                                    #ball.sendMessage(to, str(error))                         
+                            except Exception as error:
+                                ball.sendMessage(to, str(error))                         
 
                     elif msg.text.lower() == "/ลบแชท":                     
                         ball.removeAllMessages(op.param2)
