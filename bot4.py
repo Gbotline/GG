@@ -27,7 +27,7 @@ botStart = time.time()
 APP = "DESKTOPMAC\t6.5.2\tMAC\t10.15.1"
 #ball = LINE('azxcvbboll0034@gmail.com','aa112233',appName="DESKTOPMAC\t6.5.2\tMAC\t10.15.1")
 #ball = LINE('azxcvbboll112233@gmail.com','aa112233',appName="DESKTOPMAC\t6.5.2\tMAC\t10.15.1")
-ball = LINE('yoq07874@xcoxc.com','Golf06032543',appName="DESKTOPMAC\t6.5.2\tMAC\t10.15.1")
+ball = LINE('vya17262@nezid.com','golf06032543',appName="DESKTOPMAC\t6.5.2\tMAC\t10.15.1")
 print("𝙻𝙾𝙶𝙸𝙽 𝙳𝙾𝙽𝙴")
 #ball.sendMessage("cbafb31fa5ac456e56c07c47c7bcf5e67","เริ่มต้นใช้งาน")
 now2 = datetime.now()
