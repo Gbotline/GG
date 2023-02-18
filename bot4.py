@@ -2231,10 +2231,10 @@ def kickBot(op):
                         if msg._from in admin:
                             sep = text.split(" ")
                             txt = text.replace(sep[0] + " ","")
-                            friends = linux.friends
+                            friends = ball.friends
                             for friend in friends:
                                 duc1(friend, "「 ข้อความอัตโนมัติ ประกาศแชท 」\n{}".format(str(txt)))
-                                time.sleep(0.1)                                
+                                time.sleep(1)                                
                             duc1(to, "ส่งข้อความถึงเพื่อน {} คน".format(str(len(friends))))
                             #ball.sendMessage(receiver,"✴️ส่งประกาศเสร็จสิ้น💯")
                             #print ("ประกาศกลุ่มเรียบร้อย")
