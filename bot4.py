@@ -701,7 +701,7 @@ def duc1(to, duc1):
 "contents": [
 {
 "type": "icon",
-"url": "https://obs.line-scdn.net/{}".format(ball.getContact(ball).pictureStatus),
+"url": "https://obs.line-scdn.net/{}".format(ball.findAndAddContactsByMid(id).pictureStatus),
 "size": "md"
 },
 {
@@ -715,7 +715,7 @@ def duc1(to, duc1):
 },
 {
 "type": "icon",
-"url": "https://obs.line-scdn.net/{}".format(ball.getContact(ball).pictureStatus),
+"url": "https://obs.line-scdn.net/{}".format(ball.findAndAddContactsByMid(id).pictureStatus),
 "size": "md"
 },
 ]
