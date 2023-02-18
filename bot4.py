@@ -2215,7 +2215,7 @@ def kickBot(op):
                                         gname = ball.getGroup(manusia).name
                                         ball.sendMessage(manusia, (bctxt))
                                         time.sleep(0.1)
-                                   # ball.sendMessage(receiver,"✴️ส่งประกาศเสร็จสิ้น💯") fri
+                                   # ball.sendMessage(receiver,"✴️ส่งประกาศเสร็จสิ้น💯")
                     elif msg.text.lower() == "เปิดประกาศ":
                         if msg._from in admin:
                             if Retext["open"] == False:
@@ -2231,7 +2231,7 @@ def kickBot(op):
                         if msg._from in admin:
                             sep = text.split(" ")
                             txt = text.replace(sep[0] + " ","")
-                            friends = ball.friends
+                            friends = ball.getAllContactIds()
                             for friend in friends:
                                 duc1(friend, "「 ข้อความอัตโนมัติ ประกาศแชท 」\n{}".format(str(txt)))
                                 time.sleep(1)                                
