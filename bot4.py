@@ -681,6 +681,51 @@ def sendImage(to, path, name="image"):
     except Exception as error:
         logError(error)
 
+def duc1(to, duc1):
+    data={
+"type": "flex",
+"altText": duc1,
+"contents": {
+"type": "bubble",
+"styles": {
+"footer": {"backgroundColor": "#000000"},
+},
+"footer": {
+"type": "box",
+"layout": "vertical",
+"spacing": "sm",
+"contents": [
+{
+"type": "box",
+"layout": "baseline",
+"contents": [
+{
+"type": "icon",
+"url": "https://obs.line-scdn.net/{}".format(ball.getContact(ball).pictureStatus),
+"size": "md"
+},
+{
+"type": "text",
+"text": duc1,
+"color":"#ffffff",
+"gravity": "center",
+"align":"center",
+"wrap": True,
+"size": "md"
+},
+{
+"type": "icon",
+"url": "https://obs.line-scdn.net/{}".format(ball.getContact(ball).pictureStatus),
+"size": "md"
+},
+]
+}
+]
+}
+}
+}
+    sendTemplate(to, data)
+
 def kickBot(op):
     try:
         if op.type == 0:
@@ -689,9 +734,9 @@ def kickBot(op):
             if RXProtect["autoAdd"] == True:
                 #runautoblock = mp.Process(target=ball.sendMessage(op.param1,str(settings["message"])+ball.getContact(ballMID).displayName))
                 #runautoblock = mp.Process(target=ball.findAndAddContactsByMid(op.param1))
-                maxbots.findAndAddContactsByMid(op.param1)
-                maxbots.sendMentionFooter(op.param1, settings["message"], [op.param1])
-                runautoblock.start()
+                ball.findAndAddContactsByMid(op.param1)
+                ball.sendMentionFooter(op.param1, settings["message"], [op.param1])
+                #runautoblock.start()
                 
                 
 ###
@@ -2183,16 +2228,16 @@ def kickBot(op):
                                 ball.sendMessage(to,"ปิดบอทประกาศแล้ว")
 
                     elif msg.text.lower().startswith("ประกาศแชท:"):
-                          if msg._from in admin:
-                            bctxt = msg.text[len("ประกาศแชท:"):].strip()
-                            contacts = ball.getAllContactIds()
-                            #ball.reissueUserTicket()
-                            for manusia in contacts:
-                                ball.sendMessage(manusia, "{}".format(str(bctxt)))
-                            ball.sendMessage(to, "Bₑᵣₕₐₛᵢₗ bᵣₒₐdcₐₛₜ ₖₑ {} ₜₑₘₐₙ".format(str(len(contacts))))
-                            time.sleep(0.1)
+                        if msg._from in admin:
+                            sep = text.split(" ")
+                            txt = text.replace(sep[0] + " ","")
+                            friends = linux.friends
+                            for friend in friends:
+                                duc1(friend, "「 ข้อความอัตโนมัติ ประกาศแชท 」\n{}".format(str(txt)))
+                                time.sleep(0.1)                                
+                            duc1(to, "ส่งข้อความถึงเพื่อน {} คน".format(str(len(friends))))
                             #ball.sendMessage(receiver,"✴️ส่งประกาศเสร็จสิ้น💯")
-                            print ("ประกาศกลุ่มเรียบร้อย")
+                            #print ("ประกาศกลุ่มเรียบร้อย")
 #=================================x setting down ========================== ?? มุดเข้ากลุ่ม 🦋
                     elif teambotboy == 'เช็ค' or teambotboy == 'set':
                         if msg._from in admin:
