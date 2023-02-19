@@ -98,6 +98,26 @@ helptest = """╔════ คำสั่ง BOT
 ╠/ออก [ลำดับกลุ่ม] = (สั่งบอทออกกลุ่มตามดำลับ)
 ╠!groups = (เช็คกลุ่มที่บอทอยู่)
 ╠/ลบแชท = (ลบแชทบอท)
+╠/แทค = (แทคสมาชิกในกลุ่ม)
+╠─── ข้อมูล BOT ───
+╠ ชื่อบอท: {bName}
+╠ ออนไลน์: {runtime}
+══════════════════════""".format(bName="{bName}",ballMID=cl,runtime="{runtime}")
+#=========================================
+helptest1 = """╔════ คำสั่ง BOT
+╠/อัพชื่อ [ข้อความ] = (อัพชื่อบอท)
+╠/อัพรูป [ส่งรูป] = (อัพรูปบอท)
+╠/ชื่อกลุ่ม [ข้อความ]= (เปลี่ยนชื่อกลุ่ม)
+╠─── คำสั่งเช็ค BOT ───
+╠/mag = (ดู MID สมาชิกในกลุ่ม)
+╠/บอทออก = (สั่งบอทออก)
+╠/ออก [ลำดับกลุ่ม] = (สั่งบอทออกกลุ่มตามดำลับ)
+╠!groups = (เช็คกลุ่มที่บอทอยู่)
+╠/ลบแชท = (ลบแชทบอท)
+╠/แทค = (แทคสมาชิกในกลุ่ม)
+╠─── คำสั่งเพิ่ม-ลบ แอดมิน BOT ───
+╠.เพิ่มแอด [@] = เพิ่มแอดมิน
+╠.ลบแอด [@] = ลบแอดมิน
 ╠─── ข้อมูล BOT ───
 ╠ ชื่อบอท: {bName}
 ╠ ออนไลน์: {runtime}
@@ -1122,6 +1142,31 @@ def kickBot(op):
                          detailShow = helptest.format(bName=ball.getProfile().displayName,runtime=resTime)
                          hMsg = detailShow
                          ball.sendMessage(msg.to, hMsg)
+####### คำสั่งแอด
+                    elif text.lower() == 'คำสั่งแอด':
+                      if msg._from in owner:
+                         totalTime = time.time() - Start
+                         mins, secs = divmod(totalTime,60)
+                         hours, mins = divmod(mins,60)
+                         days, hours = divmod(hours, 24)
+                         resTime = ""
+                         if days != 00:
+                             resTime += "%2d วัน " % (days)
+                         if hours != 00:
+                             resTime += "%2d ชั่วโมง " % (hours)
+                         if mins != 00:
+                             resTime += "%2d นาที " % (mins)
+                         resTime += "%2d วินาที" % (secs)
+                         totalTime = time.time() - Start
+                         mins, secs = divmod(totalTime,60)
+                         hours, mins = divmod(mins,60)
+                         days, hours = divmod(hours, 24)
+                         mounts, days = divmod(days, 30)
+                         years, mounts = divmod(mounts, 12)                    	
+                         detailShow = helptest1.format(bName=ball.getProfile().displayName,runtime=resTime)
+                         hMsg = detailShow
+                         ball.sendMessage(msg.to, hMsg)
+                
                          
                     elif msg.text.lower().startswith("/ชื่อกลุ่ม "):
                         group = ball.getCompactGroup(msg.to)
@@ -1187,7 +1232,7 @@ def kickBot(op):
                         created = time.strftime('%d/%m/%Y %H:%M:%S', time.localtime(int(group.createdTime) / 1000))
                         ball.sendMessage(msg.to, "เวลาสร้างกลุ่ม:\n"+created)            
        
-                    elif msg.text.lower() == "/mra":
+                    elif msg.text.lower() == "/mag":
                         group = ball.getGroup(to)
                         num = 0
                         bastest_ = "┏━━「MID{}」".format(group.name)
@@ -1207,7 +1252,7 @@ def kickBot(op):
                             #number = removeCmd("/ออก", text)
                             groups = ball.getGroupIdsJoined()
                             try:
-                                group = groups[int(txt)+1]
+                                group = groups[int(txt)]
                                 G = ball.getGroup(group)
                                 try:
                                     ball.leaveGroup(G.id)
@@ -1243,7 +1288,8 @@ def kickBot(op):
                                  "linkUrl": "line://nv/profilePopup/mid=uf16e7700aed711bf44ec5e40e75401a8"
                             }
                         }
-                        sendTemplate(to, data)        
+                        ball.sendMessage(to, "{}".format(str(run))) #แก้1
+                        #sendTemplate(to, data)        
                         
                     elif text.lower() == "ออน":
                         timeNow = time.time() - Start
@@ -2278,7 +2324,7 @@ def kickBot(op):
                                            except:
                                                ball.sentMessage(msg.to,"An unknown error was encountered.")
 #===================Edit ban up ===============   
-                    elif teambotboy.startswith("add1 ") or teambotboy.startswith("t add1 "):
+                    elif teambotboy.startswith("/เพิ่มแอดมิน ") or teambotboy.startswith("t add1 "):
                       if msg._from in creator:
                            targets = []
                            key = eval(msg.contentMetadata["MENTION"])
@@ -2718,13 +2764,13 @@ def kickBot(op):
                                 no=no+1
                             ball.sendMessage(to,str(text))
                     
-                    elif msg.text.lower() == '.owner' or msg.text.lower() == 'owner':
+                    elif msg.text.lower() == '.คทแอด' or msg.text.lower() == '/คทแอด':
                         if msg._from in owner:
                             for x in admin:
                                 print(x)
                                 ball.sendContact(to,x)
 #                                ball.sendMessage(to, None, contentMetadata={'mid':x}, contentType=13)
-                    elif teambotboy == '.คทแอด' or teambotboy == '.แอดมิน':
+                    elif teambotboy == '.staff' or teambotboy == '/staff':
                         if msg._from in admin:
                             for x in staff:
                                 ball.sendMessage(to, None, contentMetadata={'mid':x}, contentType=13)
