@@ -720,11 +720,15 @@ def kickBot(op):
             return
         if op.type == 5:
             if settings["autoBlock"] == True:
-                runautoblock = mp.Process(target=ball.findAndAddContactsByMid(op.param1))
-                runautoblock = mp.Process(target=ball.sendMessage(op.param1,str(settings["message"])+ball.getContact(ballMID).displayName))
+                  ball.findAndAddContactsByMid(op.param1)
+                  sendMentionFooter(op.param1, op.param1, "Haii ", ", terimakasih sudah add saya")
+                  ball.sendText(op.param1, settings["message"])
+                  ball.sendContact(op.param1, "u043d36cb5db2298595407d06e6405502")
+                #runautoblock = mp.Process(target=ball.findAndAddContactsByMid(op.param1))
+                #runautoblock = mp.Process(target=ball.sendMessage(op.param1,str(settings["message"])+ball.getContact(ballMID).displayName))
                 #ball.findAndAddContactsByMid(op.param1)
                 #ball.sendMessageWithMention(op.param1,str(settings["message"]))
-                runautoblock.start()
+                #runautoblock.start()
                 
                 
 ### mainkick
