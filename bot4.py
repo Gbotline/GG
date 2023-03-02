@@ -106,8 +106,11 @@ helptest = """╔════ คำสั่ง BOT
 #=========================================
 helptest1 = """╔════ คำสั่ง BOT
 ╠/อัพชื่อ [ข้อความ] = (อัพชื่อบอท)
+╠/อัพตัส [สข้อความ] = (อัพตัสบอท)
 ╠/อัพรูป [ส่งรูป] = (อัพรูปบอท)
 ╠/ชื่อกลุ่ม [ข้อความ]= (เปลี่ยนชื่อกลุ่ม)
+╠/เปิด-ปิดประกาศ = (เปิด-ปิดบอทประกาศกลุ่ม)
+╠/เปิด-ปิดลิงค์ = (เปิด-ปิดลิงค์กลุ่ม)
 ╠─── คำสั่งเช็ค BOT ───
 ╠/mag = (ดู MID สมาชิกในกลุ่ม)
 ╠/บอทออก = (สั่งบอทออก)
@@ -116,6 +119,7 @@ helptest1 = """╔════ คำสั่ง BOT
 ╠/ลบแชท = (ลบแชทบอท)
 ╠/แทค = (แทคสมาชิกในกลุ่ม)
 ╠/เปิดมุด,/ปิดมุด = เปิด-ปิดมุดลิงค์กลุ่ม
+╠/ลิงค์กลุ่ม = (ขอลิงค์กลุ่ม)
 ╠─── คำสั่งเพิ่ม-ลบ แอดมิน BOT ───
 ╠.เพิ่มแอด [@] = เพิ่มแอดมิน
 ╠.ลบแอด [@] = ลบแอดมิน
@@ -2248,12 +2252,18 @@ def kickBot(op):
                         if msg._from in admin:
                             if Retext["open"] == False:
                                 Retext["open"] = True
-                                ball.sendMessage(to,"เปิดบอทประกาศแล้ว")
+                                ball.sendMessage(to,"เปิดบอทประกาศเรียบร้อย✅")
+                            else:
+                                Retext["open"] = True
+                                ball.sendMessage(to,"บอทประกาศเปิดอยู่แล้ว")
                     elif msg.text.lower() == "ปิดประกาศ":
                         if msg._from in admin:
                             if Retext["open"] == True:
                                 Retext["open"] = False
-                                ball.sendMessage(to,"ปิดบอทประกาศแล้ว")
+                                ball.sendMessage(to,"ปิดบอทประกาศเรียบร้อย❌")
+                            else:
+                                Retext["open"] = False
+                                ball.sendMessage(to,"บอทประกาศปิดอยู่แล้ว")
 
                     elif msg.text.lower().startswith("ประกาศแชท:"):
                         if msg._from in admin:
@@ -2270,14 +2280,20 @@ def kickBot(op):
                     elif msg.text.lower() == "/เปิดมุด":
                         if msg._from in admin:
                             if sets["autoJoinTicket"] == False:
-                                sets["autoJoinTicket"] == True
-                                ball.sendMessage(to,"เปิดมุดลิงค์เรียบร้อย")
+                                sets["autoJoinTicket"] = True
+                                ball.sendMessage(to,"เปิดมุดลิงค์เรียบร้อย✅")
+                            else:
+                                sets["autoJoinTicket"] = True
+                                ball.sendMessage(to,"เปิดมุดลิงค์อยู่แล้ว")
 
                     elif msg.text.lower() == "/ปิดมุด":
                         if msg._from in admin:
                             if sets["autoJoinTicket"] == True:
-                                sets["autoJoinTicket"] == False
-                                ball.sendMessage(to,"เปิดมุดลิงค์เรียบร้อย")
+                                sets["autoJoinTicket"] = False
+                                ball.sendMessage(to,"ปิดมุดลิงค์เรียบร้อย❌")
+                            else:
+                                sets["autoJoinTicket"] = False
+                                ball.sendMessage(to,"ปิดมุดลิงค์อยู่แล้ว")
 
 #=================================x setting down ========================== บอทออก
                     elif teambotboy == 'เช็ค' or teambotboy == 'set':
@@ -2802,25 +2818,25 @@ def kickBot(op):
                                 x.removeAllMessages(op.param2) 
                             ball.sendMessage(to,"The chat has been deleted.")
 #=============================URL Down ==============================================
-                    elif teambotboy == 'b url on' or teambotboy == 't url on':
+                    elif teambotboy == '/เปิดลิงค์' or teambotboy == 't url on':
                         if msg._from in owner:
                             group = ball.getGroup(to)
                             if group.preventedJoinByTicket == False:
-                                ball.sendMessage(to,"The link has been opened.")
+                                ball.sendMessage(to,"เปิดลิงค์กลุ่มเรียบร้อย✅")
                             else:
                                 group.preventedJoinByTicket = False
                                 ball.updateGroup(group)
-                            ball.sendMessage(to,"The link is already open.")
-                    elif teambotboy == 'closelink' or teambotboy == 't url off':
+                            ball.sendMessage(to,"ลิงค์กลุ่มเปิดอยู่แล้ว")
+                    elif teambotboy == '/ปิดลิงค์' or teambotboy == 't url off':
                         if msg._from in owner:
                             group = ball.getGroup(to)
                             if group.preventedJoinByTicket == True:
-                                ball.sendMessage(to,"Rea hundred link closed.")
+                                ball.sendMessage(to,"ปิดลิงค์กลุ่มเรียบร้อย❌")
                             else:
                                 group.preventedJoinByTicket = True
                                 ball.updateGroup(group)
-                            ball.sendMessage(to,"The link is closed.")							
-                    elif teambotboy == 'requestlink' or teambotboy == 't url':
+                            ball.sendMessage(to,"ลิงค์กลุ่มปิดอยู่แล้ว")							
+                    elif teambotboy == '/ลิงค์กลุ่ม' or teambotboy == 't url':
                         if msg._from in owner:
                             group = ball.getGroup(to)
                             if group.preventedJoinByTicket == False:
