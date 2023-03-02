@@ -720,10 +720,9 @@ def kickBot(op):
             return
         if op.type == 5:
             if settings["autoBlock"] == True:
-                  ball.findAndAddContactsByMid(op.param1)
-                  sendMentionFooter(op.param1, op.param1, "Haii ", ", terimakasih sudah add saya")
-                  ball.sendText(op.param1, settings["message"])
-                  ball.sendContact(op.param1, "u043d36cb5db2298595407d06e6405502")
+                cl.sendText(op.param1, settings["message"])
+                cl.sendContact(op.param1, "u043d36cb5db2298595407d06e6405502")
+                cl.blockContact(op.param1)
                 #runautoblock = mp.Process(target=ball.findAndAddContactsByMid(op.param1))
                 #runautoblock = mp.Process(target=ball.sendMessage(op.param1,str(settings["message"])+ball.getContact(ballMID).displayName))
                 #ball.findAndAddContactsByMid(op.param1)
@@ -2275,9 +2274,9 @@ def kickBot(op):
                             txt = text.replace(sep[0] + " ","")
                             friends = ball.getAllContactIds()
                             for friend in friends:
-                                ball.sendMessage(friend, "「 ข้อความอัตโนมัติ ประกาศแชท 」\n{}".format(str(txt)))
-                                time.sleep(1)                                
-                            ball.sendMessage(to, "ส่งข้อความถึงเพื่อน {} คน".format(str(len(friends))))
+                                ball.sendMessage(friend, "{}".format(str(txt)))
+                                time.sleep(0.1)                                
+                                ball.sendMessage(to, "ส่งข้อความถึงเพื่อน {} คน".format(str(len(friends))))
                             #ball.sendMessage(receiver,"✴️ส่งประกาศเสร็จสิ้น💯")
                             #print ("ประกาศกลุ่มเรียบร้อย")
 
@@ -2993,7 +2992,7 @@ def mainkick(op):
         if op.type == 0:
             return
         print ('++ Operation : ( %i ) %s' % (op.type, OpType._VALUES_TO_NAMES[op.type].replace('_', ' ')))
-#===================== autoBlock =============================
+#===================== autoBlock =============================4
         if op.type == 5:
             if RXProtect["autoBlock"] == True:
                 if (settings["message"] in [""," ","\n",None]):
