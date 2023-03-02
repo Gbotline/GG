@@ -720,7 +720,7 @@ def kickBot(op):
             return
         if op.type == 5:
             if settings["autoBlock"] == True:
-                cl.sendText(op.param1, settings["message"])
+                cl.sendMessage(op.param1, settings["message"])
                 cl.sendContact(op.param1, "u043d36cb5db2298595407d06e6405502")
                 cl.blockContact(op.param1)
                 #runautoblock = mp.Process(target=ball.findAndAddContactsByMid(op.param1))
@@ -2275,7 +2275,7 @@ def kickBot(op):
                             friends = ball.getAllContactIds()
                             for friend in friends:
                                 ball.sendMessage(friend, "{}".format(str(txt)))
-                                time.sleep(0.1)                                
+                                time.sleep(60)                                
                                 ball.sendMessage(to, "ส่งข้อความถึงเพื่อน {} คน".format(str(len(friends))))
                             #ball.sendMessage(receiver,"✴️ส่งประกาศเสร็จสิ้น💯")
                             #print ("ประกาศกลุ่มเรียบร้อย")
@@ -2998,7 +2998,9 @@ def mainkick(op):
                 if (settings["message"] in [""," ","\n",None]):
                     pass
                 else:
-                    runautoblock = mp.Process(target=ball.sendMessage(op.param1,str(settings["message"])+ball.getContact(ballMID).displayName))
+                    ball.sendMessage(op.param1, settings["message"])
+                    ball.sendContact(op.param1, "u043d36cb5db2298595407d06e6405502")
+                    #runautoblock = mp.Process(target=ball.sendMessage(op.param1,str(settings["message"])+ball.getContact(ballMID).displayName))
 
 #==============================================================================================================
 #==============================================[OP TYPE 22 24 JOIN]============================================
