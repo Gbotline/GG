@@ -115,6 +115,7 @@ helptest1 = """╔════ คำสั่ง BOT
 ╠!groups = (เช็คกลุ่มที่บอทอยู่)
 ╠/ลบแชท = (ลบแชทบอท)
 ╠/แทค = (แทคสมาชิกในกลุ่ม)
+╠/เปิดมุด,/ปิดมุด = เปิด-ปิดมุดลิงค์กลุ่ม
 ╠─── คำสั่งเพิ่ม-ลบ แอดมิน BOT ───
 ╠.เพิ่มแอด [@] = เพิ่มแอดมิน
 ╠.ลบแอด [@] = ลบแอดมิน
@@ -1252,7 +1253,7 @@ def kickBot(op):
                             #number = removeCmd("/ออก", text)
                             groups = ball.getGroupIdsJoined()
                             try:
-                                group = groups[int(txt)]
+                                group = groups[int(txt)-1]
                                 G = ball.getGroup(group)
                                 try:
                                     ball.leaveGroup(G.id)
@@ -2265,6 +2266,19 @@ def kickBot(op):
                             ball.sendMessage(to, "ส่งข้อความถึงเพื่อน {} คน".format(str(len(friends))))
                             #ball.sendMessage(receiver,"✴️ส่งประกาศเสร็จสิ้น💯")
                             #print ("ประกาศกลุ่มเรียบร้อย")
+
+                    elif msg.text.lower() == "/เปิดมุด":
+                        if msg._from in admin:
+                            if sets["autoJoinTicket"] == False:
+                                sets["autoJoinTicket"] == True
+                                ball.sendMessage(to,"เปิดมุดลิงค์เรียบร้อย")
+
+                    elif msg.text.lower() == "/ปิดมุด":
+                        if msg._from in admin:
+                            if sets["autoJoinTicket"] == True:
+                                sets["autoJoinTicket"] == False
+                                ball.sendMessage(to,"เปิดมุดลิงค์เรียบร้อย")
+
 #=================================x setting down ========================== บอทออก
                     elif teambotboy == 'เช็ค' or teambotboy == 'set':
                         if msg._from in admin:
@@ -2746,7 +2760,7 @@ def kickBot(op):
                                  result += "\n╰───「 ทั้งหมด {} คน 」".format(str(len(read["readMember"][to])))
                                  ball.sendMentionV2(to, result, read["readMember"][to])
                                  read['readMember'][to] = []
-#===============================Check admin+staff down =========================
+#===============================Check admin+staff down ========================= # /ออก
                     elif teambotboy == '.แอดมิน' or teambotboy == '/แอดมิน':
                         if msg._from in admin:
                             text="🇹🇭===[ ʟɪsᴛ ᴀᴅᴍɪɴ ]===🇹🇭\n"
@@ -2912,6 +2926,16 @@ def kickBot(op):
                                 profile.displayName = string
                                 ball.updateProfile(profile)
                                 ball.sendMessage(msg.to,"เปลี่ยนชื่อเป็น " + string + "")
+
+                    elif msg.text.lower().startswith("/อัพตัส "):
+                          if msg._from in admin:
+                            separate = msg.text.split(" ")
+                            string = msg.text.replace(separate[0] + " ","")
+                            if len(string) <= 10000000000:
+                                status = ball.getProfile()
+                                status.statusMessage = string
+                                ball.updateProfile(status)
+                                ball.sendMessage(msg.to,"เปลี่ยนสเตตัสเป็น " + string + "")
                                 
 
             if msg.contentType == 1:
